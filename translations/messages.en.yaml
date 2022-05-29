@@ -1,0 +1,14 @@
+global:
+  author_label: Author
+  created_at: Created at
+  is_published: Published
+  home_label: Home
+  login_label: Sign In
+  email_label: Email
+  password_label: Password
+  sign-in_label: Sign In
+article:
+  content_label: Content
+  title_label: Title
+tag:
+  label: Tag(s)
