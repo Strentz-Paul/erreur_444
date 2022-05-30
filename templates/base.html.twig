@@ -4,19 +4,22 @@
         <meta charset="UTF-8">
         <title>{% block title %}Eunnow | {{ 'global.home_label'|trans }}{% endblock %}</title>
         <link rel="icon" href="{{ asset('favicon.ico') }}">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+        {% block meta %}
         {% endblock %}
     </head>
     <body>
-    <div class="container-fluid">
-        {% block body %}
+        <div class="container-fluid">
+            {% block menu %}
+                {% include 'layouts/front--menu.html.twig' %}
+            {% endblock %}
+            {% block body %}
+            {% endblock %}
+        </div>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
-    </div>
     </body>
 </html>
