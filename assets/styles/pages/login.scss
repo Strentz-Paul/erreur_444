@@ -3,13 +3,10 @@
 }
 
 .login--container {
-  padding: 35px 20px;
-  background-color: #563D7C;
-  border-radius: 10px;
-  color: #fbfbfb;
-}
-.login--logo-border-circle
-{
-  border-radius: 10px;
-  border: 1px solid #fbfbfb;
+  padding: 50px 40px;
+  border-radius: 50px;
+  color: #000;
+  background: linear-gradient(145deg, #e2e2e2, #ffffff);
+  box-shadow:  34px 34px 77px #d5d5d5,
+              -34px -34px 77px #ffffff;
 }
