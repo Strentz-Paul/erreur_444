@@ -3,7 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Tag;
+use App\Helper\DoctrineHelper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,28 +42,40 @@ class TagRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Tag[] Returns an array of Tag objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('t.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @param QueryBuilder $query
+     * @param int $articleId
+     * @param string $tAlias
+     * @param string $aAlias
+     * @return QueryBuilder
+     */
+    public static function addArticleIdConstraint(
+        QueryBuilder $query,
+        int $articleId,
+        string $tAlias = DoctrineHelper::ALIAS_TAG,
+        string $aAlias = DoctrineHelper::ALIAS_ARTICLE
+    ): QueryBuilder {
+        if (!DoctrineHelper::hasAlias($query, $aAlias)) {
+            self::addArticleJoin($query, $tAlias, $aAlias, Join::INNER_JOIN);
+        }
+        return ArticleRepository::addArticleIdWhere($query, $articleId, $aAlias);
+    }
 
-//    public function findOneBySomeField($value): ?Tag
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @param QueryBuilder $query
+     * @param string $tAlias
+     * @param string $aAlias
+     * @param string $joinType
+     * @return QueryBuilder
+     */
+    public static function addArticleJoin(
+        QueryBuilder $query,
+        string $tAlias = DoctrineHelper::ALIAS_TAG,
+        string $aAlias = DoctrineHelper::ALIAS_ARTICLE,
+        string $joinType = Join::LEFT_JOIN
+    ): QueryBuilder {
+        $relation = "$tAlias.article";
+        $joinType = $joinType === Join::LEFT_JOIN ? 'leftjoin' : 'innerjoin';
+        return $query->$joinType($relation, $aAlias);
+    }
 }

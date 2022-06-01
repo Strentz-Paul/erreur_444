@@ -9,32 +9,38 @@ use Doctrine\Common\Collections\Collection;
 
 final class ArticleVm
 {
+    private int $id;
     private string $slug;
     private string $titre;
     private DateTimeInterface $createdAt;
     private string $content;
     private Collection $tags;
-    private User $auteur;
+    private string $auteur;
     private Collection $commentaires;
-    private bool $isShortContext = false;
 
     public function __construct(
+        int $id,
+        bool $isShortContext,
         string $slug,
         string $titre,
         DateTimeInterface $createdAt,
         string $content,
-        Collection $tags,
-        User $auteur,
-        Collection $commentaires,
-        bool $isShortContext
+        string $auteur,
     ) {
+        $this->id = $id;
         $this->slug = $slug;
         $this->titre = $titre;
         $this->createdAt = $createdAt;
-        $this->content = $isShortContext === false ? $this->convertToBionicReading($content) : $this->convertToShort($content);
-        $this->tags = $tags;
+        $this->content = $isShortContext === false ? $content : $this->convertToShort($content);
         $this->auteur = $auteur;
-        $this->commentaires = $commentaires;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     /**
@@ -78,12 +84,33 @@ final class ArticleVm
     }
 
     /**
-     * @return User
+     * @return string
      */
-    public function getAuteur(): User
+    public function getAuteur(): string
     {
         return $this->auteur;
     }
+
+    /**
+     * @param Collection $tags
+     * @return ArticleVm
+     */
+    public function setTags(Collection $tags): ArticleVm
+    {
+        $this->tags = $tags;
+        return $this;
+    }
+
+    /**
+     * @param Collection $commentaires
+     * @return ArticleVm
+     */
+    public function setCommentaires(Collection $commentaires): ArticleVm
+    {
+        $this->commentaires = $commentaires;
+        return $this;
+    }
+
 
     /**
      * @return Collection
@@ -93,14 +120,12 @@ final class ArticleVm
         return $this->commentaires;
     }
 
-    private function convertToBionicReading(string $content): string
-    {
-        return ArticleHelper::convertToBionicReadingContent($content);
-    }
-
+    /**
+     * @param string $content
+     * @return string
+     */
     private function convertToShort(string $content): string
     {
-        $shorterArticle = ArticleHelper::convertToShort($content, 100);
-        return ArticleHelper::convertToBionicReadingContent($shorterArticle, 3);
+        return ArticleHelper::convertToShort($content, 100);
     }
 }

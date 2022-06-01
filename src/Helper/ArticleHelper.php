@@ -2,8 +2,6 @@
 
 namespace App\Helper;
 
-use http\Exception\InvalidArgumentException;
-
 final class ArticleHelper
 {
     /**

@@ -8,7 +8,10 @@ global:
   password_label: Password
   sign-in_label: Sign In
 article:
+  label: Article
+  label_plurialized: Articles
   content_label: Content
   title_label: Title
+  slug_label: Slug
 tag:
   label: Tag(s)

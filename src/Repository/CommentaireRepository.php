@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Commentaire;
+use App\Helper\DoctrineHelper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,28 +41,33 @@ class CommentaireRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Commentaire[] Returns an array of Commentaire objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @param QueryBuilder $query
+     * @param int $articleId
+     * @param string $comAlias
+     * @return QueryBuilder
+     */
+    public static function addArticleIdConstraint(
+        QueryBuilder $query,
+        int $articleId,
+        string $comAlias = DoctrineHelper::ALIAS_COMMENTAIRE
+    ): QueryBuilder {
+        return self::addArticleIdWhere($query, $articleId, $comAlias);
+    }
 
-//    public function findOneBySomeField($value): ?Commentaire
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @param QueryBuilder $query
+     * @param int $articleId
+     * @param string $comAlias
+     * @return QueryBuilder
+     */
+    public static function addArticleIdWhere(
+        QueryBuilder $query,
+        int $articleId,
+        string $comAlias = DoctrineHelper::ALIAS_COMMENTAIRE
+    ): QueryBuilder {
+        $query->andWhere("$comAlias.article = :id")
+            ->setParameter('id', $articleId);
+        return $query;
+    }
 }

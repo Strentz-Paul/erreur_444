@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3 m-b-20">
+        <div class="row">
+            <div class="col-12">
+                {{ titre }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {{ content|raw }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {{ render_date(createdAt) }}
+            </div>
+        </div>
+    </div>
+</div>
