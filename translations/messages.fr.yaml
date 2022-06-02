@@ -12,6 +12,9 @@ article:
   label_plurialized: Articles
   content_label: Contenu
   title_label: Titre
+  slug_label: Slug
 tag:
   label: Etiquette
   label_plurialized: Etiquettes
+comment:
+  label_count: Nombre de commentaires
