@@ -15,3 +15,5 @@ article:
   slug_label: Slug
 tag:
   label: Tag(s)
+comment:
+  label_count: Number of comments

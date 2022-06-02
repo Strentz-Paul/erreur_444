@@ -1,0 +1,28 @@
+.articles--container {
+  .articles--article-short-container {
+    .articles--article-short-title {
+
+    }
+    .articles--article-short-content {
+
+    }
+    .articles--article-short-date {
+      color: dimgrey;
+      font-size: 0.7em;
+    }
+    .articles--article-short-tags-container {
+      display: flex;
+      align-items: center;
+    }
+    .articles--article-short-tag {
+      background-color: var(--bg-color);
+      border-radius: 5px;
+      padding: 1px 5px;
+      margin: 0 5px 0 0;
+      font-size: 0.7em;
+    }
+    .articles--article-short-commentaires {
+      background-color: dimgrey !important;
+    }
+  }
+}

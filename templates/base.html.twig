@@ -20,6 +20,11 @@
         </div>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+            </script>
         {% endblock %}
     </body>
 </html>

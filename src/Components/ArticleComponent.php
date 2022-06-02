@@ -18,4 +18,5 @@ class ArticleComponent implements ArticleComponentInterface
     public string $auteur;
     public Collection $tags;
     public Collection $commentaires;
+    public bool $shortContent = false;
 }

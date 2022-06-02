@@ -1,19 +1,26 @@
-<div class="row">
+<div class="row{% if shortContent is same as true %} articles--article-short-container{% endif %} m-b-20">
     <div class="col-12 col-md-6 offset-md-3 m-b-20">
-        <div class="row">
-            <div class="col-12">
-                {{ titre }}
+        <div class="row m-b-5">
+            <div class="col-6 articles--article-short-date">
+                {{ render_date(createdAt) ~ ' - ' ~ auteur  }}
+                <span class="badge badge-pill articles--article-short-commentaires m-l-5" data-toggle="tooltip" data-placement="top" title="{{ 'comment.label_count'|trans }}">{{ commentaires.count }}</span>
+            </div>
+            <div class="col-12 m-b-2">
+                <h2 class="articles--article-short-title m-0">{{ titre }}</h2>
+            </div>
+            <div class="col-12 articles--article-short-tags-container m-t-0">
+                {% for tag in tags %}
+                    <div class="articles--article-short-tag" style="--bg-color: {{ tag.colorHexa }};">{{ tag.intitule }}</div>
+                {% endfor %}
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                {{ content|raw }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                {{ render_date(createdAt) }}
+                <p class="articles--article-short-content m-b-10">
+                    {{ content|raw }}
+                </p>
             </div>
         </div>
     </div>
 </div>
+
