@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ component('article_alone', {
+            id              : article.id,
+            slug            : article.slug,
+            titre           : article.titre,
+            content         : article.content,
+            createdAt       : article.createdAt,
+            tags            : article.tags,
+            auteur          : article.auteur,
+            commentaires    : article.commentaires
+    }) }}
+{% endblock %}

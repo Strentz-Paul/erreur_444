@@ -19,7 +19,7 @@ interface ArticleManagerInterface
 
     /**
      * @param string $slug
-     * @return ArticleVm
+     * @return ArticleVm|null
      */
-    public function getArticleVmBySlug(string $slug): ArticleVm;
+    public function getArticleVmBySlug(string $slug): ?ArticleVm;
 }

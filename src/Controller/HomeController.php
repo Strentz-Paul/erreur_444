@@ -2,11 +2,7 @@
 
 namespace App\Controller;
 
-use App\Contracts\Manager\ArticleManagerInterface;
-use App\Helper\ArticleHelper;
-use App\Manager\ArticleManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 

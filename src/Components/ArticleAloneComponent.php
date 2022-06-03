@@ -6,8 +6,8 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent('article')]
-class ArticleComponent
+#[AsTwigComponent('article_alone')]
+class ArticleAloneComponent
 {
     public int $id;
     public string $slug;
@@ -17,5 +17,4 @@ class ArticleComponent
     public string $auteur;
     public Collection $tags;
     public Collection $commentaires;
-    public bool $shortContent = false;
 }
