@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Service;
+
+use App\Contracts\Service\ArticleServiceInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+
+class ArticleService implements ArticleServiceInterface
+{
+    private HttpClientInterface $client;
+    private $rapidApiKey;
+
+    public function __construct(
+        HttpClientInterface $client,
+        string $rapidApiKey
+    ) {
+        $this->client = $client;
+        $this->rapidApiKey = $rapidApiKey;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function generateBionicContent(string $content): string
+    {
+        if (strlen($content) < 500) {
+            $newContent = $this->client->request(
+                'POST',
+                'https://bionic-reading1.p.rapidapi.com/convert', array(
+                    'headers' => array(
+                        "X-RapidAPI-Host: bionic-reading1.p.rapidapi.com",
+                        "X-RapidAPI-Key: $this->rapidApiKey",
+                        "content-type: application/x-www-form-urlencoded"
+                    ),
+                    'body' => array(
+                        'content' => $content,
+                        'response_type' => 'html',
+                        'request_type' => 'html',
+                        'fixation' => '2',
+                        'saccade' => '20'
+                    )
+                )
+            );
+            $contentType = $newContent->getHeaders()['content-type'][0];
+            $content = $newContent->getContent();
+            return $content;
+        }
+        $arrayContent = str_split($content, 500);
+
+    }
+}

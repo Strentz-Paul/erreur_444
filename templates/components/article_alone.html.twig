@@ -1,0 +1,27 @@
+<div class="row article-alone--container">
+    <div class="col-12 col-md-8 offset-md-2">
+        <div class="row">
+            <div class="col-12 article-alone--title">
+                <h1>{{ titre }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12 article-alone-tags-container m-t-0">
+                    {% for tag in tags %}
+                        {{ component('tag', {
+                            color       : tag.colorHexa,
+                            intitule    : tag.intitule,
+                            class       : 'article-alone--tag'
+                        }) }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 article-alone--content">
+                {{ content|raw }}
+            </div>
+        </div>
+    </div>
+</div>

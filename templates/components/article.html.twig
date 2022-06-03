@@ -1,5 +1,6 @@
 <div class="row{% if shortContent is same as true %} articles--article-short-container{% endif %} m-b-20">
     <div class="col-12 col-md-6 offset-md-3 m-b-20">
+        <a href="{{ path('article_index', {'slug' : slug}) }}" class="articles--article-link">
         <div class="row m-b-5">
             <div class="col-6 articles--article-short-date">
                 {{ render_date(createdAt) ~ ' - ' ~ auteur  }}
@@ -10,7 +11,11 @@
             </div>
             <div class="col-12 articles--article-short-tags-container m-t-0">
                 {% for tag in tags %}
-                    <div class="articles--article-short-tag" style="--bg-color: {{ tag.colorHexa }};">{{ tag.intitule }}</div>
+                    {{ component('tag', {
+                        color       : tag.colorHexa,
+                        intitule    : tag.intitule,
+                        class       : 'articles--article-short-tag'
+                    }) }}
                 {% endfor %}
             </div>
         </div>
@@ -21,6 +26,7 @@
                 </p>
             </div>
         </div>
+        </a>
     </div>
 </div>
 

@@ -52,9 +52,17 @@ final class ArticleManager implements ArticleManagerInterface
     /**
      * @inheritDoc
      */
-    public function getArticleVmBySlug(string $slug): ArticleVm
+    public function getArticleVmBySlug(string $slug): ?ArticleVm
     {
-        return $this->articleRepo->getArticleVmBySlug($slug);
+        $vm = $this->articleRepo->getArticleVmBySlug($slug);
+        if ($vm === null) {
+            throw new InvalidArgumentException("Slug does not exist");
+        }
+        $tags = $this->articleRepo->findAllTagsByArticleId($vm->getId());
+        $coms = $this->articleRepo->findAllCommentairesByArticleId($vm->getId());
+        $vm->setTags($tags)
+            ->setCommentaires($coms);
+        return $vm;
     }
 
     private function addAssociativesEntityToArticleVm(Collection $vms): Collection

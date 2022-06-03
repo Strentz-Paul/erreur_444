@@ -77,10 +77,10 @@ class ArticleRepository extends ServiceEntityRepository
 
     /**
      * @param string $slug
-     * @return ArticleVm
+     * @return ArticleVm|null
      * @throws NonUniqueResultException
      */
-    public function getArticleVmBySlug(string $slug): ArticleVm
+    public function getArticleVmBySlug(string $slug): ?ArticleVm
     {
         $aAlias = DoctrineHelper::ALIAS_ARTICLE;
         $query = $this->_em->createQueryBuilder()
