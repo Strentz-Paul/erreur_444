@@ -20,7 +20,7 @@
     border-radius: 10px;
     text-transform: uppercase;
 
-    &:hover {
+    &:hover, &:focus {
       color: #fbfbfb;
     }
   }

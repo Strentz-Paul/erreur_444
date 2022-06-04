@@ -3,6 +3,10 @@
 namespace App\Service;
 
 use App\Contracts\Service\ArticleServiceInterface;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class ArticleService implements ArticleServiceInterface
@@ -34,6 +38,14 @@ class ArticleService implements ArticleServiceInterface
         return implode('', $arrayContentBionic);
     }
 
+    /**
+     * @param string $content
+     * @return string
+     * @throws ClientExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws TransportExceptionInterface
+     */
     private function apiCall(string $content): string
     {
         $newContent = $this->client->request(
