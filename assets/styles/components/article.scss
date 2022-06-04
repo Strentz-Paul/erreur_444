@@ -42,6 +42,7 @@
   .article-alone-tags-container {
     display: flex;
     align-items: center;
+    justify-content: end;
     margin-bottom: 20px;
   }
   .article-alone--tag {
@@ -49,5 +50,14 @@
     border-radius: 5px;
     padding: 1px 5px;
     margin: 0 5px 0 0;
+  }
+  .article-alone--author {
+    font-size: 0.9em;
+    text-align: right;
+  }
+  .article-alone--date {
+    font-size: 0.7em;
+    color: dimgrey;
+    text-align: right;
   }
 }

@@ -39,6 +39,7 @@
         "symfony/string": "5.4.*",
         "symfony/translation": "5.4.*",
         "symfony/twig-bundle": "5.4.*",
+        "symfony/ux-swup": "^2.1",
         "symfony/ux-twig-component": "^2.1",
         "symfony/validator": "5.4.*",
         "symfony/web-link": "5.4.*",
