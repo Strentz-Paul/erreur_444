@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  maildev:
+    image: djfarrelly/maildev
+    ports:
+      - "1110:80"
+      - "1055:25"
+
+  yarn:
+    build: docker/yarn
+    user: "${HOST_UID:-1000}:${HOST_GROUP_ID:-1000}"
+    volumes:
+      - ./:/home/node/app
+      - ~/.ssh:/home/node/.ssh
+
+  server_web:
+    volumes:
+      - "./docker/apache/dev.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf:ro"
+    ports:
+      - "8088:80"
+      - "8443:443"
+
+  php:
+    env_file:
+      - .env.local
+      - .env
+    environment:
+      PHP_EXTENSION_XDEBUG: 1
+    depends_on:
+      - mysql
