@@ -2,7 +2,7 @@ grumphp:
     tasks:
         shell:
             scripts:
-                - [ "-c", "bin/console doctrine:schema:validate" ]
+                - [ "-c", 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm php "bin/console doctrine:schema:validate"']
                 - [ "-c", "bin/local-php-security-checker_1.0.0_linux_amd64" ]
         git_commit_message:
             allow_empty_message: false
