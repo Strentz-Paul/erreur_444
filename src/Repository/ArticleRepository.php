@@ -93,6 +93,60 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param Tag $tag
+     * @return Collection
+     */
+    public function getAllArticlesByTagVms(Tag $tag): Collection
+    {
+        $aAlias = DoctrineHelper::ALIAS_ARTICLE;
+        $tAlias = DoctrineHelper::ALIAS_TAG;
+        $query = $this->_em->createQueryBuilder()
+            ->from(Article::class, $aAlias);
+        self::addArticleVMSelect($query, $aAlias);
+        self::addDefaultConstraint($query, true, $aAlias);
+        self::addTagConstraint($query, $tag, $aAlias, $tAlias);
+        dd($query->getDQL());
+        return new ArrayCollection($query->getQuery()->getResult());
+    }
+
+    /**
+     * @param QueryBuilder $query
+     * @param Tag $tag
+     * @param string $aAlias
+     * @param string $tAlias
+     * @return QueryBuilder
+     */
+    public static function addTagConstraint(
+        QueryBuilder $query,
+        Tag $tag,
+        string $aAlias = DoctrineHelper::ALIAS_ARTICLE,
+        string $tAlias = DoctrineHelper::ALIAS_TAG
+    ): QueryBuilder {
+        if (!DoctrineHelper::hasAlias($query, $tAlias)) {
+            self::addTagJoin($query, $tAlias, Join::INNER_JOIN);
+        }
+        $query->andWhere("$tAlias.id = :id")
+            ->setParameter('id', $tag->getId());
+        return $query;
+    }
+
+    /**
+     * @param QueryBuilder $query
+     * @param string $tAlias
+     * @param string $joinType
+     * @return QueryBuilder
+     */
+    public static function addTagJoin(
+        QueryBuilder $query,
+        string $tAlias = DoctrineHelper::ALIAS_TAG,
+        string $joinType = Join::LEFT_JOIN
+    ): QueryBuilder {
+        $joinType = $joinType === Join::LEFT_JOIN ? 'leftjoin' : 'innerjoin';
+        $query->$joinType(Tag::class, $tAlias);
+        return $query;
+    }
+
+    /**
      * @param QueryBuilder $query
      * @param string $slug
      * @param string $aAlias
@@ -132,6 +186,7 @@ class ArticleRepository extends ServiceEntityRepository
         $vm = TagVm::class;
         $query = $this->_em->createQueryBuilder();
         $query->select("NEW $vm(" .
+            "$tAlias.slug, " .
             "$tAlias.intitule, " .
             "$tAlias.color" .
             ")")

@@ -14,6 +14,9 @@ article:
   title_label: Title
   slug_label: Slug
 tag:
-  label: Tag(s)
+  label: Tag
+  label_plurialized: Tags
+  color_label: Color
+  intitule_label: Entitle
 comment:
   label_count: Number of comments
