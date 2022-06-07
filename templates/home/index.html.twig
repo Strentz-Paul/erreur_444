@@ -1,9 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% if tag is defined %}
-       Filtrer par Tag :  {{ tag }}
-    {% endif %}
     {{ component('articles') }}
 {% endblock %}
 {% block javascripts %}
