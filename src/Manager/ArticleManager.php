@@ -4,6 +4,7 @@ namespace App\Manager;
 
 use App\Contracts\Manager\ArticleManagerInterface;
 use App\Entity\Article;
+use App\Entity\Tag;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
@@ -63,6 +64,16 @@ final class ArticleManager implements ArticleManagerInterface
         $vm->setTags($tags)
             ->setCommentaires($coms);
         return $vm;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getArticlesByTag(Tag $tag): Collection
+    {
+        $vms = $this->articleRepo->getAllArticlesByTagVms($tag);
+        dd($vms);
+        return $this->addAssociativesEntityToArticleVm($vms);
     }
 
     private function addAssociativesEntityToArticleVm(Collection $vms): Collection

@@ -16,5 +16,7 @@ article:
 tag:
   label: Etiquette
   label_plurialized: Etiquettes
+  color_label: Couleur
+  intitule_label: Intitule
 comment:
   label_count: Nombre de commentaires

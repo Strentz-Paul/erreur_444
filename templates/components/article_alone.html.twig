@@ -1,6 +1,15 @@
 <div class="row article-alone--container m-t-20">
     <div class="col-12 col-md-8 offset-md-2">
         <div class="row">
+            <div class="col-12">
+                <a href="{{ path('homepage') }}">
+                    <svg width="24" height="24" fill="dimgrey" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-12 article-alone--date">{{ render_date(createdAt) }}</div>
             <div class="col-12 article-alone--title">
                 <h1>{{ titre }}</h1>
@@ -13,7 +22,8 @@
                         {{ component('tag', {
                             color       : tag.colorHexa,
                             intitule    : tag.intitule,
-                            class       : 'article-alone--tag'
+                            class       : 'article-alone--tag',
+                            slug        : tag.slug
                         }) }}
                     {% endfor %}
                 </div>

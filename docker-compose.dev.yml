@@ -1,7 +1,18 @@
 version: '3'
 
 services:
-
+  mysql:
+    image: mysql:8.0
+    restart: "no"
+    command: "--default-authentication-plugin=mysql_native_password --innodb-use-native-aio=0"
+    healthcheck:
+      test: "/etc/init.d/mysql status"
+      timeout: 1s
+      retries: 60
+    ports:
+      - 3346:3306
+    volumes:
+      - "./docker/db/mysql:/var/lib/mysql"
   maildev:
     image: djfarrelly/maildev
     ports:

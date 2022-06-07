@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Tag;
 use App\Helper\DoctrineHelper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
@@ -40,6 +41,50 @@ class TagRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    /**
+     * @param string $slug
+     * @return Tag|null
+     * @throws NonUniqueResultException
+     */
+    public function findOneBySlug(string $slug): ?Tag
+    {
+        $tAlias = DoctrineHelper::ALIAS_TAG;
+        $query = $this->createQueryBuilder($tAlias);
+        self::addSlugConstraint($query, $slug, $tAlias);
+        $query->setMaxResults(1);
+        return $query->getQuery()->getOneOrNullResult();
+    }
+
+    /**
+     * @param QueryBuilder $query
+     * @param string $slug
+     * @param string $tAlias
+     * @return QueryBuilder
+     */
+    public static function addSlugConstraint(
+        QueryBuilder $query,
+        string $slug,
+        string $tAlias = DoctrineHelper::ALIAS_TAG
+    ): QueryBuilder {
+        return self::addSlugWhere($query, $slug, $tAlias);
+    }
+
+    /**
+     * @param QueryBuilder $query
+     * @param string $slug
+     * @param string $tAlias
+     * @return QueryBuilder
+     */
+    public static function addSlugWhere(
+        QueryBuilder $query,
+        string $slug,
+        string $tAlias = DoctrineHelper::ALIAS_TAG
+    ): QueryBuilder {
+        $query->andWhere("$tAlias.slug = :slug")
+            ->setParameter("slug", $slug);
+        return $query;
     }
 
     /**
