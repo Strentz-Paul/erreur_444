@@ -18,4 +18,5 @@ class ArticleComponent
     public Collection $tags;
     public Collection $commentaires;
     public bool $shortContent = false;
+    public ?string $tagSlug;
 }

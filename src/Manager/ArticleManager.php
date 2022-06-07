@@ -71,8 +71,20 @@ final class ArticleManager implements ArticleManagerInterface
      */
     public function getArticlesByTag(Tag $tag): Collection
     {
-        $vms = $this->articleRepo->getAllArticlesByTagVms($tag);
-        dd($vms);
+        $articles = $tag->getArticle();
+        $vms = new ArrayCollection();
+        foreach ($articles as $article) {
+            $vm = new ArticleVm(
+                $article->getId(),
+                true,
+                $article->getSlug(),
+                $article->getTitre(),
+                $article->getCreatedAt(),
+                $article->getContent(),
+                (string)$article->getUser()
+            );
+            $vms->add($vm);
+        }
         return $this->addAssociativesEntityToArticleVm($vms);
     }
 

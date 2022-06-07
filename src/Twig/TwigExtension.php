@@ -16,7 +16,8 @@ final class TwigExtension extends AbstractExtension
     public function getFunctions()
     {
         return array(
-            new TwigFunction('render_date', array($this, 'renderDate'))
+            new TwigFunction('render_date', array($this, 'renderDate')),
+            new TwigFunction('convert_slug_to_string', array($this, 'convertSlugToString'))
         );
     }
 
@@ -34,5 +35,14 @@ final class TwigExtension extends AbstractExtension
             return '';
         }
         return DateTimeHelper::formatDate($date);
+    }
+
+    /**
+     * @param string $string
+     * @return string
+     */
+    public function convertSlugToString(string $string): string
+    {
+        return implode(' ', explode('-', $string));
     }
 }
