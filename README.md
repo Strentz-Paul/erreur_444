@@ -19,6 +19,7 @@ Pour me contacter:
 ----
 ## ROADMAP
 v1.0  *-- Développement en cours*: 
+- changer la favicon...
 - Finir la configuration du server (DNS, BDD)
 - Créer un ci/cd afin de livrer directement sur le server une fois la pull request mergée.
 - Tester les [Live components](https://symfony.com/bundles/ux-live-component/current/index.html)
