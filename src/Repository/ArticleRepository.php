@@ -173,6 +173,7 @@ class ArticleRepository extends ServiceEntityRepository
             ")")
             ->from(Commentaire::class, $comAlias);
         CommentaireRepository::addArticleIdConstraint($query, $articleId, $comAlias);
+        CommentaireRepository::addOrderByDefaultConstraint($query, $comAlias);
         return new ArrayCollection($query->getQuery()->getResult());
     }
 

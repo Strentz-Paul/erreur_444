@@ -6,6 +6,7 @@ use App\Contracts\Manager\TagManagerInterface;
 use App\Form\CommentaireType;
 use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 use Symfony\Component\Form\FormView;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
