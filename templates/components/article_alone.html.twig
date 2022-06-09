@@ -42,5 +42,46 @@
         <div class="row">
             <div class="col-12 article-alone--author">{{ auteur }}</div>
         </div>
+        <div class="row m-t-40">
+            <div class="col-12 m-b-15">
+                {{ 'global.commentaire_plurialized_label'|trans }}
+                <span class="badge badge-pill article-alone--count-commentaires">{{ commentaires.count }}</span>
+            </div>
+            <div class="col-12 m-b-15 article-alone--form-commentaire-container">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-12 article-alone--form-commentaire-username-container">
+                        <div class="row">
+                            <div class="col-6 article-alone--form-commentaire-username-label">
+                                {{ form_label(form.username) }}
+                            </div>
+                            <div class="col-6 article-alone--form-commentaire-username-input">
+                                {{ form_widget(form.username) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 article-alone--form-commentaire-content-container">
+                        <div class="row">
+                            <div class="col-12 article-alone--form-commentaire-content-input">
+                                {{ form_widget(form.content) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-12 col-md-8 offset-md-2 article--commentaires-container">
+                {% for commentaire in commentaires %}
+                    {{ component('commentaire', {
+                        username    : commentaire.username,
+                        content     : commentaire.content,
+                        createdAt   : commentaire.createdAt
+                    }) }}
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
+

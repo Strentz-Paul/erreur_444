@@ -7,6 +7,7 @@ global:
   email_label: Email
   password_label: Password
   sign-in_label: Sign In
+  commentaire_plurialized_label: Comments
 article:
   label: Article
   label_plurialized: Articles

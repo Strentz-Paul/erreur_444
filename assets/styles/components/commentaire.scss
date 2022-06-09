@@ -1,0 +1,41 @@
+.article--commentaires-container {
+  .article--commentaire-alone-container {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f5f0fc;
+    border-radius: 10px;
+    .article--commentaire-alone-header {
+      font-size: 12px;
+      font-style: italic;
+      margin-bottom: 10px;
+      .article--commentaire-alone-author {
+        text-align: left;
+      }
+      .article--commentaire-alone-date {
+        text-align: right;
+      }
+    }
+    .article--commentaire-alone-body {
+      text-align: justify;
+    }
+  }
+}
+.article-alone--form-commentaire-container {
+  .article-alone--form-commentaire-username-container {
+    .article-alone--form-commentaire-username-label {
+
+    }
+    .article-alone--form-commentaire-username-input {
+
+    }
+  }
+  .article-alone--form-commentaire-content-container {
+    .article-alone--form-commentaire-content-label {
+
+    }
+
+    .article-alone--form-commentaire-content-input {
+
+    }
+  }
+}
