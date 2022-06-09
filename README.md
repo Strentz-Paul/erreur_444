@@ -24,6 +24,7 @@ v1.0  *-- Développement en cours*
 - Créer un ci/cd afin de livrer directement sur le server une fois la pull request mergée.
 - Tester les [Live components](https://symfony.com/bundles/ux-live-component/current/index.html)
 - Ajouter un footer avec sitemap
+- Fix du bionnic reading sur les shorts content
 
 v2.0
 - Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page)
@@ -32,6 +33,7 @@ v2.0
 - Paginer les articles en infinite scroll
 - Upload d'image pour Article... (pas certains)
 - Ajout d'analytics avec [matomo](https://matomo.org/)
+- Créer un générateur de bionic reading?
 
 v3.0
 - Ajout d'une newsletter (lier avec un service de Newsletter externe ?)
