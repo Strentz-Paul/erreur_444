@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Commentaire;
 use App\Helper\DoctrineHelper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -69,5 +70,17 @@ class CommentaireRepository extends ServiceEntityRepository
         $query->andWhere("$comAlias.article = :id")
             ->setParameter('id', $articleId);
         return $query;
+    }
+
+    /**
+     * @param QueryBuilder $query
+     * @param string $comAlias
+     * @return QueryBuilder
+     */
+    public static function addOrderByDefaultConstraint(
+        QueryBuilder $query,
+        string $comAlias = DoctrineHelper::ALIAS_COMMENTAIRE
+    ): QueryBuilder {
+        return $query->orderBy("$comAlias.createdAt", "DESC");
     }
 }

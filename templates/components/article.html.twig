@@ -4,7 +4,7 @@
         <a href="{{ pathToArticle }}" class="articles--article-link">
         <div class="row m-b-5">
             <div class="col-6 articles--article-short-date">
-                {{ render_date(createdAt) ~ ' - ' ~ auteur  }}
+                {{ render_diff_day(createdAt) ~ ' - ' ~ auteur  }}
                 <span class="badge badge-pill articles--article-short-commentaires m-l-5" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ 'comment.label_count'|trans }}">{{ commentaires.count }}</span>
             </div>
             <div class="col-12 m-b-2">

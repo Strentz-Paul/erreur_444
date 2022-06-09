@@ -173,7 +173,22 @@ class ArticleRepository extends ServiceEntityRepository
             ")")
             ->from(Commentaire::class, $comAlias);
         CommentaireRepository::addArticleIdConstraint($query, $articleId, $comAlias);
+        CommentaireRepository::addOrderByDefaultConstraint($query, $comAlias);
         return new ArrayCollection($query->getQuery()->getResult());
+    }
+
+    /**
+     * @param string $slug
+     * @return Article|null
+     * @throws NonUniqueResultException
+     */
+    public function findOneBySlug(string $slug): ?Article
+    {
+        $aAlias = DoctrineHelper::ALIAS_ARTICLE;
+        $query = $this->createQueryBuilder($aAlias);
+        self::addSlugConstraint($query, $slug, $aAlias);
+        $query->setMaxResults(1);
+        return $query->getQuery()->getOneOrNullResult();
     }
 
     /**

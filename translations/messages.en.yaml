@@ -11,6 +11,9 @@ global:
   username: Username
   your_message: Your message
   submit: Submit
+  yesterday: Yesterday
+  days_ago: %count_days% days ago
+  today: Today
 article:
   label: Article
   label_plurialized: Articles
