@@ -3,12 +3,17 @@
 namespace App\Twig;
 
 use App\Helper\DateTimeHelper;
+use DateTimeImmutable;
 use DateTimeInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class TwigExtension extends AbstractExtension
 {
+    public function __construct(private TranslatorInterface $translator)
+    {
+    }
 
     /**
      * @return array|TwigFunction[]
@@ -17,7 +22,8 @@ final class TwigExtension extends AbstractExtension
     {
         return array(
             new TwigFunction('render_date', array($this, 'renderDate')),
-            new TwigFunction('convert_slug_to_string', array($this, 'convertSlugToString'))
+            new TwigFunction('convert_slug_to_string', array($this, 'convertSlugToString')),
+            new TwigFunction('render_diff_day', array($this, 'renderDiffDay'))
         );
     }
 
@@ -35,6 +41,34 @@ final class TwigExtension extends AbstractExtension
             return '';
         }
         return DateTimeHelper::formatDate($date);
+    }
+
+    /**
+     * @param DateTimeInterface $date
+     * @return string
+     */
+    public function renderDiffDay(DateTimeInterface $date): string
+    {
+        $today = new DateTimeImmutable();
+        $diff = $date->diff($today)->days;
+        switch ($diff) {
+            case 0:
+                return $this->translator->trans('global.today');
+                break;
+            case 1:
+                return $this->translator->trans('global.yesterday');
+                break;
+            case $diff > 1 && $diff <= 15:
+                return $this->translator->trans('global.days_ago', array(
+                    '%count_days%' => $diff
+                ));
+                break;
+            case $diff > 15:
+                return $this->renderDate($date, '-');
+                break;
+            default:
+                return '-';
+        }
     }
 
     /**
