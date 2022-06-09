@@ -18,14 +18,14 @@ Pour me contacter:
 
 ----
 ## ROADMAP
-v1.0  *-- Développement en cours*: 
+v1.0  *-- Développement en cours*
 - changer la favicon...
 - Finir la configuration du server (DNS, BDD)
 - Créer un ci/cd afin de livrer directement sur le server une fois la pull request mergée.
 - Tester les [Live components](https://symfony.com/bundles/ux-live-component/current/index.html)
 - Ajouter un footer avec sitemap
 
-v2.0 :
+v2.0
 - Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page)
 - Stocker les articles dans le [cache Sf](https://symfony.com/doc/5.4/the-fast-track/fr/21-cache.html) voir Varnish afin de gagner en performance d'affichage
 - Ajouter un dark theme

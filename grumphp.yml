@@ -7,5 +7,5 @@ grumphp:
             allow_empty_message: false
             max_subject_width: 72
             matchers:
-                'Must contain technical or feature or bugfix (ex. feature: commit_message | technical: commit_message| bugfix: commit_message)': '/^((feature|bugfix|technical)\: ).+/'
+                'Must contain technical or feature or fix (ex. feature: commit_message | technical: commit_message| fix: commit_message)': '/^((feature|fix|technical)\: ).+/'
             enforce_capitalized_subject: false
