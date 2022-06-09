@@ -42,6 +42,7 @@
         <div class="row">
             <div class="col-12 article-alone--author">{{ auteur }}</div>
         </div>
+        <hr class="article--hr-comment">
         <div class="row m-t-40">
             <div class="col-12 m-b-15">
                 {{ 'global.commentaire_plurialized_label'|trans }}
@@ -52,10 +53,10 @@
                 <div class="row">
                     <div class="col-12 article-alone--form-commentaire-username-container">
                         <div class="row">
-                            <div class="col-6 article-alone--form-commentaire-username-label">
+                            <div class="col-12 article-alone--form-commentaire-username-label">
                                 {{ form_label(form.username) }}
                             </div>
-                            <div class="col-6 article-alone--form-commentaire-username-input">
+                            <div class="col-5 article-alone--form-commentaire-username-input">
                                 {{ form_widget(form.username) }}
                             </div>
                         </div>
@@ -64,22 +65,32 @@
                 <div class="row">
                     <div class="col-12 article-alone--form-commentaire-content-container">
                         <div class="row">
+                            <div class="col-12 article-alone--form-commentaire-content-label">
+                                {{ form_label(form.content) }}
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-12 article-alone--form-commentaire-content-input">
                                 {{ form_widget(form.content) }}
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 article-alone--form-commentaire-submit">
+                        {{ form_widget(form.submit) }}
+                    </div>
+                </div>
                 {{ form_end(form) }}
-            </div>
-            <div class="col-12 col-md-8 offset-md-2 article--commentaires-container">
-                {% for commentaire in commentaires %}
-                    {{ component('commentaire', {
-                        username    : commentaire.username,
-                        content     : commentaire.content,
-                        createdAt   : commentaire.createdAt
-                    }) }}
-                {% endfor %}
+                <div class="col-12 article--commentaires-container">
+                    {% for commentaire in commentaires %}
+                        {{ component('commentaire', {
+                            username    : commentaire.username,
+                            content     : commentaire.content,
+                            createdAt   : commentaire.createdAt
+                        }) }}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
