@@ -8,6 +8,9 @@ global:
   password_label: Password
   sign-in_label: Sign In
   commentaire_plurialized_label: Comments
+  username: Username
+  your_message: Your message
+  submit: Submit
 article:
   label: Article
   label_plurialized: Articles
