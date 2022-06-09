@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use App\Contracts\Manager\ArticleManagerInterface;
 use App\Contracts\Manager\TagManagerInterface;
+use App\Contracts\Service\CommentaireServiceInterface;
 use App\Dto\CommentaireDto;
 use App\Form\CommentaireType;
-use App\Helper\UrlHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,18 +15,29 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends AbstractController
 {
     /**
+     * @param Request $request
      * @param string $slug
      * @param ArticleManagerInterface $articleManager
+     * @param CommentaireServiceInterface $commentaireService
      * @return Response
      */
     #[Route('/{slug}', name: 'article_index')]
     public function articleAction(
+        Request $request,
         string $slug,
-        ArticleManagerInterface $articleManager
+        ArticleManagerInterface $articleManager,
+        CommentaireServiceInterface $commentaireService
     ): Response {
         $article = $articleManager->getArticleVmBySlug($slug);
-        $dto = new CommentaireDto();
+        $dto = new CommentaireDto($article->getSlug());
         $commentaireForm = $this->createForm(CommentaireType::class, $dto);
+        $commentaireForm->handleRequest($request);
+        if ($commentaireForm->isSubmitted() && $commentaireForm->isValid()) {
+            $commentaireService->addCommentaireToArticle($dto);
+            return $this->redirectToRoute('article_index', array(
+                'slug' => $slug
+            ));
+        }
         return $this->render('article/index.html.twig', array(
             'article' => $article,
             'form' => $commentaireForm->createView()
@@ -34,23 +45,35 @@ class ArticleController extends AbstractController
     }
 
     /**
+     * @param Request $request
      * @param string $slugTag
      * @param string $slug
      * @param ArticleManagerInterface $articleManager
      * @param TagManagerInterface $tagManager
+     * @param CommentaireServiceInterface $commentaireService
      * @return Response
      */
     #[Route('/tag/{slugTag}/{slug}/', name: 'article_with_tag')]
     public function articleWithTagAction(
+        Request $request,
         string $slugTag,
         string $slug,
         ArticleManagerInterface $articleManager,
-        TagManagerInterface $tagManager
+        TagManagerInterface $tagManager,
+        CommentaireServiceInterface $commentaireService
     ): Response {
         $article = $articleManager->getArticleVmBySlug($slug);
         $tag = $tagManager->findOneBySlug($slugTag);
-        $dto = new CommentaireDto();
+        $dto = new CommentaireDto($article->getSlug());
         $commentaireForm = $this->createForm(CommentaireType::class, $dto);
+        $commentaireForm->handleRequest($request);
+        if ($commentaireForm->isSubmitted() && $commentaireForm->isValid()) {
+            $commentaireService->addCommentaireToArticle($dto);
+            return $this->redirectToRoute('article_with_tag', array(
+                'slug' => $slug,
+                'slugTag' => $slugTag
+            ));
+        }
         return $this->render('article/index.html.twig', array(
             'article'   => $article,
             'tag'       => $tag,

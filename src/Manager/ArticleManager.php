@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use InvalidArgumentException;
 use App\ViewModel\ArticleVm;
 use Doctrine\Common\Collections\Collection;
+use LogicException;
 
 final class ArticleManager implements ArticleManagerInterface
 {
@@ -53,7 +54,7 @@ final class ArticleManager implements ArticleManagerInterface
     /**
      * @inheritDoc
      */
-    public function getArticleVmBySlug(string $slug): ?ArticleVm
+    public function getArticleVmBySlug(string $slug): ArticleVm
     {
         $vm = $this->articleRepo->getArticleVmBySlug($slug);
         if ($vm === null) {
@@ -86,6 +87,18 @@ final class ArticleManager implements ArticleManagerInterface
             $vms->add($vm);
         }
         return $this->addAssociativesEntityToArticleVm($vms);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findOneBySlug(string $slug): Article
+    {
+        $article = $this->articleRepo->findOneBySlug($slug);
+        if ($article === null) {
+            throw new LogicException("There is no Article linked to this slug");
+        }
+        return $article;
     }
 
     private function addAssociativesEntityToArticleVm(Collection $vms): Collection

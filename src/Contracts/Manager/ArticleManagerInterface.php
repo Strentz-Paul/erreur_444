@@ -2,6 +2,7 @@
 
 namespace App\Contracts\Manager;
 
+use App\Entity\Article;
 use App\Entity\Tag;
 use App\ViewModel\ArticleVm;
 use Doctrine\Common\Collections\Collection;
@@ -20,13 +21,19 @@ interface ArticleManagerInterface
 
     /**
      * @param string $slug
-     * @return ArticleVm|null
+     * @return ArticleVm
      */
-    public function getArticleVmBySlug(string $slug): ?ArticleVm;
+    public function getArticleVmBySlug(string $slug): ArticleVm;
 
     /**
      * @param Tag $tag
      * @return Collection
      */
     public function getArticlesByTag(Tag $tag): Collection;
+
+    /**
+     * @param string $slug
+     * @return Article
+     */
+    public function findOneBySlug(string $slug): Article;
 }
