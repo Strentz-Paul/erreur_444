@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-12 article--commentaire-alone-container">
+        <div class="row">
+            <div class="col-12 article--commentaire-alone-header">
+                <div class="row">
+                    <div class="col-6 article--commentaire-alone-author">
+                        {{ username }}
+                    </div>
+                    <div class="col-6 article--commentaire-alone-date">
+                        {{ render_date(createdAt) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 article--commentaire-alone-body">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+</div>

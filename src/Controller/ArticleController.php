@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Contracts\Manager\ArticleManagerInterface;
 use App\Contracts\Manager\TagManagerInterface;
+use App\Dto\CommentaireDto;
+use App\Form\CommentaireType;
 use App\Helper\UrlHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,8 +25,11 @@ class ArticleController extends AbstractController
         ArticleManagerInterface $articleManager
     ): Response {
         $article = $articleManager->getArticleVmBySlug($slug);
+        $dto = new CommentaireDto();
+        $commentaireForm = $this->createForm(CommentaireType::class, $dto);
         return $this->render('article/index.html.twig', array(
-            'article' => $article
+            'article' => $article,
+            'form' => $commentaireForm->createView()
         ));
     }
 
@@ -44,9 +49,12 @@ class ArticleController extends AbstractController
     ): Response {
         $article = $articleManager->getArticleVmBySlug($slug);
         $tag = $tagManager->findOneBySlug($slugTag);
+        $dto = new CommentaireDto();
+        $commentaireForm = $this->createForm(CommentaireType::class, $dto);
         return $this->render('article/index.html.twig', array(
             'article'   => $article,
-            'tag'       => $tag
+            'tag'       => $tag,
+            'form'      => $commentaireForm->createView()
         ));
     }
 

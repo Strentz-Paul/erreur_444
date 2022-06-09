@@ -22,8 +22,16 @@ install: ## Install docker stack, assets and vendors
 	$(DOCKER_COMPOSE_DEV) build
 	$(MAKE) composer-install
 	$(MAKE) assets-install
+	$(MAKE) start
+	$(MAKE) db-create
 	$(MAKE) db-migrate
 	$(MAKE) js-deps-install
+	$(MAKE) fixtures-install
+	$(MAKE) build-assets
+	@echo "Now you can access http://localhost:8088"
+
+db-create: ## Migrate database
+	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php bin/console doctrine:database:create'
 
 db-migrate: ## Migrate database
 	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php bin/console doctrine:migration:migrate --no-interaction'
