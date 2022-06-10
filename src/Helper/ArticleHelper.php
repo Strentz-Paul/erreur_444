@@ -53,6 +53,6 @@ final class ArticleHelper
         $content = strip_tags($content);
         $content = substr($content, 0, $maxChar);
         $content .= '...';
-        return self::convertToBionicReading($content);
+        return $content;
     }
 }

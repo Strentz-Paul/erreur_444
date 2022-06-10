@@ -1,7 +1,23 @@
 version: '3'
 
 services:
-
+  mysql:
+    image: mysql:8.0
+    restart: "no"
+    command: "--default-authentication-plugin=mysql_native_password --innodb-use-native-aio=0"
+    healthcheck:
+      test: "/etc/init.d/mysql status"
+      timeout: 1s
+      retries: 60
+    volumes:
+      - "./docker/db/mysql:/var/lib/mysql"
+    ports:
+      - 3346:3306
+    environment:
+      MYSQL_DATABASE: eunnow_site
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_USER: eunnow_user
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
   php:
     env_file:
       - .env.prod.local

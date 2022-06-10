@@ -126,6 +126,6 @@ final class ArticleVm
      */
     private function convertToShort(string $content): string
     {
-        return ArticleHelper::convertToShort($content, 100);
+        return ArticleHelper::convertToShort($content, 500);
     }
 }

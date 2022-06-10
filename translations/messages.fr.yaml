@@ -11,7 +11,7 @@ global:
   username: Nom d'utilisateur
   your_message: Votre message
   submit: Envoyer
-  days_ago: il y a %count_days% jours
+  days_ago: "il y a %count_days% jours"
   yesterday: Hier
   today: Aujourd'hui
 article:
