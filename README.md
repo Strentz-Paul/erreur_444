@@ -18,20 +18,22 @@ Pour me contacter:
 
 ----
 ## ROADMAP
-v1.0  *-- Développement en cours*: 
+v1.0  *-- Développement en cours*
 - changer la favicon...
 - Finir la configuration du server (DNS, BDD)
 - Créer un ci/cd afin de livrer directement sur le server une fois la pull request mergée.
 - Tester les [Live components](https://symfony.com/bundles/ux-live-component/current/index.html)
 - Ajouter un footer avec sitemap
+- Fix du bionnic reading sur les shorts content
 
-v2.0 :
+v2.0
 - Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page)
 - Stocker les articles dans le [cache Sf](https://symfony.com/doc/5.4/the-fast-track/fr/21-cache.html) voir Varnish afin de gagner en performance d'affichage
 - Ajouter un dark theme
 - Paginer les articles en infinite scroll
 - Upload d'image pour Article... (pas certains)
 - Ajout d'analytics avec [matomo](https://matomo.org/)
+- Créer un générateur de bionic reading?
 
 v3.0
 - Ajout d'une newsletter (lier avec un service de Newsletter externe ?)

@@ -9,10 +9,10 @@ services:
       test: "/etc/init.d/mysql status"
       timeout: 1s
       retries: 60
-    ports:
-      - 3346:3306
     volumes:
       - "./docker/db/mysql:/var/lib/mysql"
+    ports:
+      - 3346:3306
   maildev:
     image: djfarrelly/maildev
     ports:
