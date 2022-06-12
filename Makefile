@@ -7,7 +7,7 @@ export HOST_USER
 export HOST_GROUP_ID
 
 DOCKER_COMPOSE_DEV = docker-compose -f docker-compose.yml -f docker-compose.dev.yml
-DOCKER_COMPOSE_PROD = docker-compose -f docker-compose.yml -f docker-compose.prod.yml --env=.env.prod.local
+DOCKER_COMPOSE_PROD = docker-compose -f docker-compose.yml -f docker-compose.production.yml --env=.env.prod.local
 
 
 help: ## Display available commands

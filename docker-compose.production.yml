@@ -36,10 +36,6 @@ services:
     restart: unless-stopped
 
   server_web:
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(${HOSTS})"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=web,websecure"
     networks:
       - default
       - web
