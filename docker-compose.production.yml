@@ -48,3 +48,4 @@ networks:
     external:
       name: web
   default: ~
+#  TODO: Revoir la config pour la prod
