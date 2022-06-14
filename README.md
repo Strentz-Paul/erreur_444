@@ -19,9 +19,8 @@ Pour me contacter:
 ----
 ## ROADMAP
 v1.0  *-- Développement en cours*
-- Créer un ci/cd afin de livrer directement sur le server une fois la pull request mergée.
 - Tester les [Live components](https://symfony.com/bundles/ux-live-component/current/index.html)
-- Ajouter un footer avec sitemap
+- Ajouter un footer avec sitemap --> en cours
 
 v2.0
 - Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page)
@@ -39,3 +38,4 @@ v3.0
 - Mettre en place une collection Postman de l'Api
 - Mettre en place des tests automatisés pour l'Api
 - Créer un flux Rss
+- Créer un ci/cd afin de livrer directement sur le server une fois la pull request mergée.
