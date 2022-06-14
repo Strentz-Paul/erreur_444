@@ -21,7 +21,7 @@ class ArticleController extends AbstractController
      * @param CommentaireServiceInterface $commentaireService
      * @return Response
      */
-    #[Route('/{slug}', name: 'article_index')]
+    #[Route('/article/{slug}', name: 'article_index')]
     public function articleAction(
         Request $request,
         string $slug,
@@ -53,7 +53,7 @@ class ArticleController extends AbstractController
      * @param CommentaireServiceInterface $commentaireService
      * @return Response
      */
-    #[Route('/tag/{slugTag}/{slug}/', name: 'article_with_tag')]
+    #[Route('/tag/{slugTag}/article/{slug}/', name: 'article_with_tag')]
     public function articleWithTagAction(
         Request $request,
         string $slugTag,
