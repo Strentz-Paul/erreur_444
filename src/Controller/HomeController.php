@@ -16,4 +16,13 @@ class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig');
     }
+
+    /**
+     * @return Response
+     */
+    #[Route('/sitemap.xml', name: 'sitemap', defaults: ['_format'=> 'html|xml'])]
+    public function sitemapAction(): Response
+    {
+        return $this->render('home/sitemap.html.twig');
+    }
 }
