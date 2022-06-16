@@ -10,7 +10,7 @@ use App\Entity\Article;
 use App\Entity\Commentaire;
 use DateTimeImmutable;
 
-class CommentaireService implements CommentaireServiceInterface
+final class CommentaireService implements CommentaireServiceInterface
 {
     private ArticleManagerInterface $articleManager;
 
