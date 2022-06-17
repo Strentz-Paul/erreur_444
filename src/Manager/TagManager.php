@@ -5,6 +5,7 @@ namespace App\Manager;
 use App\Contracts\Manager\TagManagerInterface;
 use App\Entity\Tag;
 use App\Repository\TagRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use InvalidArgumentException;
@@ -39,5 +40,13 @@ final class TagManager implements TagManagerInterface
             throw new InvalidArgumentException('There is no tag for this slug');
         }
         return $tag;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function findAllCollection(): Collection
+    {
+        return $this->tagRepository->findAllCollection();
     }
 }

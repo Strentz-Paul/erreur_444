@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+>
+    {% for urlArticle in vm.urlsArticles %}
+        <article>
+            <url>
+                {% if urlArticle.url|replace({hostname:''}) == urlArticle.url %}
+                    {{ hostname ~ urlArticle.url }}
+                {% else %}
+                    {{ urlArticle.url }}
+                {% endif %}
+            </url>
+            <title>
+                {{ urlArticle.title }}
+            </title>
+            <createdAt>
+                {{ render_date(urlArticle.createdAt) }}
+            </createdAt>
+            <author>
+                {{ urlArticle.author }}
+            </author>
+            <content>
+                {{ urlArticle.content }}
+            </content>
+        </article>
+    {% endfor %}
+    {% for urlTag in vm.urlsTags %}
+        <tag>
+            <url>
+                {% if urlTag.url|replace({ hostname : '' }) == urlTag.url %}
+                    {{ hostname ~ urlTag.url }}
+                {% else %}
+                    {{ urlTag.url }}
+                {% endif %}
+            </url>
+        </tag>
+        <title>
+            {{ urlTag.intitule }}
+        </title>
+    {% endfor %}
+    {% for urlTagArticle in vm.urlsTagsArticles %}
+        <articleLinkedToTags>
+            <url>
+                {% if urlTagArticle.url|replace({hostname:''}) == urlTagArticle.url %}
+                    {{ hostname ~ urlTagArticle.url }}
+                {% else %}
+                    {{ urlTagArticle.url }}
+                {% endif %}
+            </url>
+        </articleLinkedToTags>
+    {% endfor %}
+</urlset>
+
