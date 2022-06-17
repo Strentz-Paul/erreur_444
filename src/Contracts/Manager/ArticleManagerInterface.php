@@ -36,4 +36,15 @@ interface ArticleManagerInterface
      * @return Article
      */
     public function findOneBySlug(string $slug): Article;
+
+    /**
+     * @return Collection
+     */
+    public function findAllCollection(): Collection;
+
+    /**
+     * @param Tag $tag
+     * @return Collection
+     */
+    public function findAllCollectionByTag(Tag $tag): Collection;
 }

@@ -192,6 +192,17 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return Collection
+     */
+    public function findAllCollection(): Collection
+    {
+        $aAlias = DoctrineHelper::ALIAS_ARTICLE;
+        $query = $this->createQueryBuilder($aAlias);
+        self::addDefaultConstraint($query, false, $aAlias);
+        return new ArrayCollection($query->getQuery()->getResult());
+    }
+
+    /**
      * @param QueryBuilder $query
      * @param User|null $user
      * @param string $aAlias

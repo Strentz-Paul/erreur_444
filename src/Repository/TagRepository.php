@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Tag;
 use App\Helper\DoctrineHelper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
@@ -55,6 +57,16 @@ class TagRepository extends ServiceEntityRepository
         self::addSlugConstraint($query, $slug, $tAlias);
         $query->setMaxResults(1);
         return $query->getQuery()->getOneOrNullResult();
+    }
+
+    /**
+     * @return Collection
+     */
+    public function findAllCollection(): Collection
+    {
+        $tAlias = DoctrineHelper::ALIAS_TAG;
+        $query = $this->createQueryBuilder($tAlias);
+        return new ArrayCollection($query->getQuery()->getResult());
     }
 
     /**

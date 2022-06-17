@@ -101,6 +101,31 @@ final class ArticleManager implements ArticleManagerInterface
         return $article;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function findAllCollection(): Collection
+    {
+        return $this->articleRepo->findAllCollection();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findAllCollectionByTag(Tag $tag): Collection
+    {
+        $articles = $tag->getArticle();
+        $aCollection = new ArrayCollection();
+        foreach ($articles as $a) {
+            $aCollection->add($a);
+        }
+        return $aCollection;
+    }
+
+    /**
+     * @param Collection $vms
+     * @return Collection
+     */
     private function addAssociativesEntityToArticleVm(Collection $vms): Collection
     {
         $collectionVm = new ArrayCollection();

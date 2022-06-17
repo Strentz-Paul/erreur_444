@@ -20,6 +20,8 @@ class HomeController extends AbstractController
     }
 
     /**
+     * @param Request $request
+     * @param SiteMapServiceInterface $siteMapService
      * @return Response
      */
     #[Route('/sitemap.xml', name: 'sitemap', defaults: ['_format'=> 'html|xml'])]
@@ -27,9 +29,14 @@ class HomeController extends AbstractController
         Request $request,
         SiteMapServiceInterface $siteMapService,
     ): Response {
-        $siteMapService->generateSiteMap($request);
-
-
-        return $this->render('home/sitemap.html.twig');
+        $vm = $siteMapService->generateSiteMap($request);
+        $response = new Response(
+            $this->renderView('home/sitemap.html.twig', array(
+                'vm' => $vm,
+                'hostname' => $vm->getHostname()
+            )), 200
+        );
+        $response->headers->set('Content-type', 'text/xml');
+        return $response;
     }
 }
