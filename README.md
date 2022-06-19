@@ -19,10 +19,10 @@ Pour me contacter:
 ----
 ## ROADMAP
 v1.0  *-- Développement en cours*
-- Tester les [Live components](https://symfony.com/bundles/ux-live-component/current/index.html) --> developpement en cours
+- Tester les [Live components](https://symfony.com/bundles/ux-live-component/current/index.html) --> developpement en cours // création de page de fonctionnalités afin de montrer comment cela fonctionne
 
 v2.0
-- Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page)
+- Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page editeur markdown ??)
 - Stocker les articles dans le [cache Sf](https://symfony.com/doc/5.4/the-fast-track/fr/21-cache.html) voir Varnish afin de gagner en performance d'affichage
 - Ajouter un dark theme
 - Paginer les articles en infinite scroll
