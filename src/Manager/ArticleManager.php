@@ -123,6 +123,14 @@ final class ArticleManager implements ArticleManagerInterface
     }
 
     /**
+     * @inheritDoc
+     */
+    public function findByQuery(string $querySearch): Collection
+    {
+        return $this->articleRepo->findByQuery($querySearch);
+    }
+
+    /**
      * @param Collection $vms
      * @return Collection
      */
