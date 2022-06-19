@@ -2,11 +2,17 @@
 
 namespace App\ViewModel;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 final class FeaturesVm
 {
     private Collection $features;
+
+    public function __construct()
+    {
+        $this->features = new ArrayCollection();
+    }
 
     /**
      * @return Collection
