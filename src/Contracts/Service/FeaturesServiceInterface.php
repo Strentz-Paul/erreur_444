@@ -2,6 +2,8 @@
 
 namespace App\Contracts\Service;
 
+use App\ViewModel\FeaturesVm;
+
 interface FeaturesServiceInterface
 {
     /**

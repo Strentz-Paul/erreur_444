@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Contracts\Service\FeaturesServiceInterface;
 use App\Enum\FeaturesEnum;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,13 +12,8 @@ class FeaturesController extends AbstractController
 {
     #[Route('/features', name: 'features_index')]
     public function featuresIndexAction(
-        FeaturesServiceInterface $featuresService
-    ): Response
-    {
-        $values = FeaturesEnum::values();
-        return $this->render('features/index.html.twig', array(
-            'features' => $values
-        ));
+    ): Response {
+        return $this->render('features/index.html.twig');
     }
 
     #[Route('/features/live-component/', name: 'features_live_component')]
