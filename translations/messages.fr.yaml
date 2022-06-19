@@ -14,6 +14,9 @@ global:
   days_ago: "il y a %count_days% jours"
   yesterday: Hier
   today: Aujourd'hui
+  action:
+    example_singuralized: Voir un exemple
+    example_plurialized: Voir des exemples
 article:
   label: Article
   label_plurialized: Articles
@@ -27,3 +30,8 @@ tag:
   intitule_label: Intitule
 comment:
   label_count: Nombre de commentaires
+feature:
+  title_plurialized: Fonctionnalités
+  live_component:
+    title: Live component
+    description: Les lives components sont des composant qui font des requêtes ajax afin d'actualiser leurs contenus.

@@ -26,9 +26,12 @@
     }
   }
 }
-.link.nav-link.active {
+.link.nav-link {
   font-weight: 700 !important;
-  transition: all 0.2s;
+  letter-spacing: 3px;
+  &:hover {
+    text-decoration: underline 4px;
+  }
 }
 .menu-dots--custom:focus {
   outline-style: none !important;

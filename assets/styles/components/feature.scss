@@ -1,0 +1,39 @@
+.features--title {
+  font-weight: 900;
+  margin: 20px;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+.features--container {
+  padding: 10px;
+  margin-top: 20px ;
+  .feature--alone-container {
+    margin-bottom: 50px;
+    .feature--alone-title {
+      border-bottom: 2px solid black;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 3px;
+      font-size: 1.2em;
+    }
+    .feature--alone-description {
+      text-align: justify;
+    }
+    .feature--alone-link {
+      text-decoration: none;
+      color: initial;
+    }
+  }
+  .feature--alone-footer {
+    padding-top: 5px;
+    text-align: right;
+    .feature--alone-link-to-more {
+      text-decoration: none;
+      color: initial;
+      &:hover {
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+}
