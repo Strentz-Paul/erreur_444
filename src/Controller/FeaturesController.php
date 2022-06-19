@@ -2,20 +2,25 @@
 
 namespace App\Controller;
 
+use App\Enum\FeaturesEnum;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class FeaturesController extends AbstractController
 {
-    #[Route('/features/index', name: 'features--live_component')]
-    public function featuresIndexAction(): Response
+    #[Route('/features', name: 'features_index')]
+    public function featuresIndexAction(
+        FeaturesServiceInterface $featuresService
+    ): Response
     {
-        // TODO : ici il faudra creer un enum de php 8.1 pour pouvoir afficher les features
-        return $this->render('features/index.html.twig');
+        $values = FeaturesEnum::values();
+        return $this->render('features/index.html.twig', array(
+            'features' => $values
+        ));
     }
 
-    #[Route('/features/live-component/', name: 'features--live_component')]
+    #[Route('/features/live-component/', name: 'features_live_component')]
     public function featureLiveComponentAction(): Response
     {
         return $this->render('features/live-components.html.twig');
