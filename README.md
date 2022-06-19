@@ -19,7 +19,7 @@ Pour me contacter:
 ----
 ## ROADMAP
 v1.0  *-- Développement en cours*
-- Tester les [Live components](https://symfony.com/bundles/ux-live-component/current/index.html)
+- Tester les [Live components](https://symfony.com/bundles/ux-live-component/current/index.html) --> developpement en cours
 
 v2.0
 - Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page)
