@@ -57,10 +57,10 @@ final class SiteMapService implements SiteMapServiceInterface
                     'slug' => $a->getSlug(),
                     'slugTag' => $t->getSlug()
                 ));
-                $url['createdAt'] = $a->getCreatedAt();
-                $url['title'] = $a->getTitre();
-                $url['content'] = $a->getContent();
-                $url['author'] = $a->getUser();
+                $urlArticleTag['createdAt'] = $a->getCreatedAt();
+                $urlArticleTag['title'] = $a->getTitre();
+                $urlArticleTag['content'] = $a->getContent();
+                $urlArticleTag['author'] = $a->getUser();
                 $urlsTagArticleCollection->add($urlArticleTag);
             }
             unset($articlesSlug);
