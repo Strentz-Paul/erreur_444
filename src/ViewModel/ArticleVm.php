@@ -5,6 +5,7 @@ namespace App\ViewModel;
 use App\Entity\User;
 use App\Helper\ArticleHelper;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 final class ArticleVm
@@ -33,6 +34,8 @@ final class ArticleVm
         $this->createdAt = $createdAt;
         $this->content = $isShortContext === false ? $content : $this->convertToShort($content);
         $this->auteur = $auteur;
+        $this->tags = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     /**

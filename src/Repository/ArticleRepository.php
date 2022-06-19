@@ -93,6 +93,73 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param string $query
+     * @return Collection
+     */
+    public function findByQuery(string $querySearch): Collection
+    {
+        $aAlias = DoctrineHelper::ALIAS_ARTICLE;
+        $query = $this->_em->createQueryBuilder()
+            ->from(Article::class, $aAlias);
+        self::addArticleVMSelect($query, $aAlias, true);
+        self::addDefaultConstraint($query, false, $aAlias);
+        self::addLikeConstraint($query, $querySearch, $aAlias);
+        return new ArrayCollection($query->getQuery()->getResult());
+    }
+
+    /**
+     * @param QueryBuilder $query
+     * @param string $querySearch
+     * @param string $aAlias
+     * @param string|null $field
+     * @param bool $startNeedle
+     * @param bool $endNeedle
+     * @return QueryBuilder
+     */
+    public static function addLikeConstraint(
+        QueryBuilder $query,
+        string $querySearch,
+        string $aAlias = DoctrineHelper::ALIAS_ARTICLE,
+        string $field = null,
+        bool $startNeedle = true,
+        bool $endNeedle = true
+    ): QueryBuilder {
+        return self::addLikeWhere($query, $querySearch, $aAlias, $field, $startNeedle, $endNeedle);
+    }
+
+    /**
+     * @param QueryBuilder $query
+     * @param string $querySearch
+     * @param string $aAlias
+     * @param string|null $field
+     * @param bool $startNeedle
+     * @param bool $endNeedle
+     * @return QueryBuilder
+     */
+    public static function addLikeWhere(
+        QueryBuilder $query,
+        string $querySearch,
+        string $aAlias = DoctrineHelper::ALIAS_ARTICLE,
+        string $field = null,
+        bool $startNeedle = true,
+        bool $endNeedle = true
+    ): QueryBuilder {
+        $start = $startNeedle === true ? "%" : "";
+        $end = $endNeedle === true ? "%" : "";
+        if ($field !== null) {
+             $query->andWhere("$aAlias.$field LIKE :sentence");
+        } else {
+            $query->andWhere(" 
+            $aAlias.titre LIKE :sentence " .
+            "OR $aAlias.content LIKE :sentence"
+            );
+        }
+        $query->setParameter('sentence', $start . $querySearch . $end);
+        return $query;
+
+    }
+
+    /**
      * @param QueryBuilder $query
      * @param string $tAlias
      * @param string $joinType

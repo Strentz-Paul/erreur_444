@@ -47,4 +47,10 @@ interface ArticleManagerInterface
      * @return Collection
      */
     public function findAllCollectionByTag(Tag $tag): Collection;
+
+    /**
+     * @param string $querySearch
+     * @return Collection
+     */
+    public function findByQuery(string $querySearch): Collection;
 }
