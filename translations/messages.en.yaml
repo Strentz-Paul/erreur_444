@@ -32,6 +32,8 @@ comment:
   label_count: Number of comments
 feature:
   title_plurialized: Features
+  some_example_title: Here are some examples of integrations
   live_component:
     title: Live component
     description: Lives components are components that make ajax requests to update their content.
+    description_long: Lives components are components that make ajax requests to update their content. The main advantage of these components is not having to reload a page in order to obtain new data either on content or on page actions. Everything is done so that we don't need to have a front-end language for small modifications.

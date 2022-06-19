@@ -37,3 +37,27 @@
     }
   }
 }
+.feature--page {
+  .feature--page-title {
+    text-transform: uppercase;
+    text-align: right;
+    h1 {
+      font-size: 1.5em !important;
+      font-weight: 700;
+    }
+  }
+  .feature--page-body {
+    margin-top: 40px;
+    text-align: justify;
+    &:first-letter {
+      font-weight: 700;
+      font-size: 2em;
+    }
+    .feature--page-example-label {
+      margin: 10px 0;
+      text-decoration: underline;
+      text-align: right;
+      font-weight: 600;
+    }
+  }
+}
