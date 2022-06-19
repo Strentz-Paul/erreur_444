@@ -52,6 +52,18 @@
                     {{ urlTagArticle.url }}
                 {% endif %}
             </url>
+            <title>
+                {{ urlTagArticle.title }}
+            </title>
+            <createdAt>
+                {{ render_date(urlTagArticle.createdAt) }}
+            </createdAt>
+            <author>
+                {{ urlTagArticle.author }}
+            </author>
+            <content>
+                {{ urlTagArticle.content }}
+            </content>
         </articleLinkedToTags>
     {% endfor %}
 </urlset>
