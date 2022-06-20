@@ -20,6 +20,12 @@ class ArticleSearchLiveComponent
 
     public function getArticles(): Collection
     {
-        return $this->articleManager->findByQuery($this->query);
+        return $this->findByQuery($this->query);
+    }
+
+    private function findByQuery(string $query): Collection
+    {
+        return $this->articleManager->findByQuery($query);
+
     }
 }
