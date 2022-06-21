@@ -5,6 +5,7 @@ namespace App\Components;
 use App\Contracts\Manager\ArticleManagerInterface;
 use Doctrine\Common\Collections\Collection;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
+use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent('article_search')]
@@ -12,6 +13,7 @@ class ArticleSearchLiveComponent
 {
     use DefaultActionTrait;
 
+    #[LiveProp(writable: true)]
     public string $query = '';
 
     public function __construct(
@@ -20,12 +22,6 @@ class ArticleSearchLiveComponent
 
     public function getArticles(): Collection
     {
-        return $this->findByQuery($this->query);
-    }
-
-    private function findByQuery(string $query): Collection
-    {
-        return $this->articleManager->findByQuery($query);
-
+        return $this->articleManager->findByQuery($this->query);
     }
 }

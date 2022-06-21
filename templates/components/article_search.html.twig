@@ -1,12 +1,19 @@
-<div {{ attributes }} class="m-4">
-    <input
-            type="search"
-            name="query"
-            value="{{ query }}"
-            data-action="live#findByQuery"
-    >
+<div {{ attributes }}>
+    <div class="input-custom d-flex align-items-center">
+        <input
+                type="search"
+                name="query"
+                value="{{ query }}"
+                data-action="live#update"
+                class="form-control"
+                placeholder="{{ 'article.search.placeholder'|trans }}"
+        >
+    </div>
 
-    {{ component('articles_for_live_component', {
-        articles : this.articles
-    }) }}
+
+    <div class="article_search--container {% if this.articles.count == 0 %}d-none{% endif %}">
+        {{ component('articles_for_live_component', {
+            articles : this.articles
+        }) }}
+    </div>
 </div>

@@ -93,11 +93,14 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param string $query
+     * @param string $querySearch
      * @return Collection
      */
     public function findByQuery(string $querySearch): Collection
     {
+        if (empty($querySearch)) {
+            return new ArrayCollection();
+        }
         $aAlias = DoctrineHelper::ALIAS_ARTICLE;
         $query = $this->_em->createQueryBuilder()
             ->from(Article::class, $aAlias);

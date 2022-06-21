@@ -23,6 +23,8 @@ article:
   content_label: Content
   title_label: Title
   slug_label: Slug
+  search:
+    placeholder: Find an article
 tag:
   label: Tag
   label_plurialized: Tags
