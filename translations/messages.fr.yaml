@@ -23,6 +23,8 @@ article:
   content_label: Contenu
   title_label: Titre
   slug_label: Slug
+  search:
+    placeholder: Chercher un article
 tag:
   label: Etiquette
   label_plurialized: Etiquettes
