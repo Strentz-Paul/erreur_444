@@ -1,0 +1,51 @@
+<div{{ attributes }}>
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6">
+                    <label class="form-label" for="markdown-input">{{ label }}</label>
+
+                    <textarea
+                            name="{{ name }}"
+                            data-model="value"
+                            data-action="live#update"
+                            rows="{{ this.rows }}"
+                            class="form-control{{ this.getError('value') ? ' is-invalid' : '' }} no-resize"
+                            id="markdown-input"
+                    >{{- value -}}</textarea>
+
+                    {% if this.getError('value') %}
+                        <div class="invalid-feedback">
+                            {{ this.getError('value').message }}
+                        </div>
+                    {% endif %}
+
+                    <div class="form-text">
+                        {{ 'global.update_each_stroke'|trans }}
+                        <br>
+                        <strong>{{ 'global.action.type_more_expand_box'|trans }}</strong>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex">
+                        <span data-loading="hide" class="text-success">
+                            {{ 'global.loaded'|trans ~ ' ! ' }}
+                        </span>
+
+                        <span data-loading class="text-warning px-2">
+                            {{ 'global.reloading'|trans ~ '... ' }}
+                            <span data-loading="delay|show">
+                                {{ '(' ~ 'global.reloading_delay'|trans ~ ')' }}
+                            </span>
+                        </span>
+                    </div>
+                    <div
+                            class="markdown-preview"
+                            data-loading="addClass(bg-success)"
+                    >
+                        {{ value|markdown_to_html }}
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
