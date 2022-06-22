@@ -1,0 +1,52 @@
+<div{{ attributes }}>
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6">
+                    <label class="form-label" for="markdown-input">{{ label }}</label>
+
+                    <textarea
+                            name="{{ name }}"
+                            data-model="value"
+                            data-action="live#update"
+                            rows="{{ this.rows }}"
+                            class="form-control{{ this.getError('value') ? ' is-invalid' : '' }} no-resize"
+                            id="markdown-input"
+                    >{{- value -}}</textarea>
+
+                    {% if this.getError('value') %}
+                        <div class="invalid-feedback">
+                            {{ this.getError('value').message }}
+                        </div>
+                    {% endif %}
+
+                    <div class="form-text">
+                        Updates on "input" (each key stroke).
+                        <br>
+                        <strong>Type more to expand the box</strong>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex">
+                        <h5>Preview</h5>
+                        <span data-loading="hide" class="text-success px-2">
+                            loaded!
+                        </span>
+
+                        <span data-loading class="text-warning px-2">
+                            reloading...
+                            <span data-loading="delay|show">
+                                (still working)
+                            </span>
+                        </span>
+                    </div>
+                    <div
+                            class="markdown-preview"
+                            data-loading="addClass(low-opacity bg-maroon)"
+                    >
+                        {{ value|markdown_to_html }}
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

@@ -28,9 +28,24 @@
                             {{ 'feature.some_example_title'|trans }}
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-t-40">
+                        <div class="col-12">
+                            <h6>{{ 'feature.live_component.search_form.label'|trans }}</h6>
+                        </div>
                         <div class="col-12">
                             {{ component('article_search') }}
+                        </div>
+                    </div>
+                    <div class="row m-t-40">
+                        <div class="col-12">
+                            <h6>{{ 'feature.live_component.editor.label'|trans }}</h6>
+                        </div>
+                        <div class="col-12">
+                            {{ component('live_text_editor', {
+                                name: 'body',
+                                value: 'This is **working**.',
+                                label: 'Custom Label'
+                            }) }}
                         </div>
                     </div>
                 </div>

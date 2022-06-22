@@ -39,3 +39,7 @@ feature:
     title: Live component
     description: Les lives components sont des composants qui font des requêtes ajax afin d'actualiser leurs contenus.
     description_long: Les lives components sont des composants qui font des requêtes ajax afin d'actualiser leurs contenus. L'atout principal de ces composants est de ne pas avoir à recharger une page afin d'obtenir des nouvelles donnée soit de contenu, soit des actions de la page. Le tout est fait pour que nous n'ayons pas besoin d'avoir un langage front pour de petites modifications.
+    search_form:
+      label: Un formulaire de recherche dynamique
+    editor:
+      label: Un éditeur de text dynamique

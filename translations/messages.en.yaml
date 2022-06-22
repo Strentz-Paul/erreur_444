@@ -39,3 +39,7 @@ feature:
     title: Live component
     description: Lives components are components that make ajax requests to update their content.
     description_long: Lives components are components that make ajax requests to update their content. The main advantage of these components is not having to reload a page in order to obtain new data either on content or on page actions. Everything is done so that we don't need to have a front-end language for small modifications.
+    search_form:
+      label: A dynamic search form
+    editor:
+      label: A dynamic text editor
