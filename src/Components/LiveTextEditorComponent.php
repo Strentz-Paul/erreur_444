@@ -40,6 +40,6 @@ class LiveTextEditorComponent
      */
     public function getRows(): int
     {
-        return max(3, floor(strlen($this->value) / 10));
+        return max(3, floor(strlen($this->value) / 50));
     }
 }
