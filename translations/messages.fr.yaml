@@ -48,3 +48,4 @@ feature:
       label: Un formulaire de recherche dynamique
     editor:
       label: Un éditeur de text dynamique
+      placeholder_input: Entrer du text au format **Markdown** ici...

@@ -48,3 +48,4 @@ feature:
       label: A dynamic search form
     editor:
       label: A dynamic text editor
+      placeholder_input: Enter text in **Markdown** format here
