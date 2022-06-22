@@ -21,28 +21,27 @@
                     {% endif %}
 
                     <div class="form-text">
-                        Updates on "input" (each key stroke).
+                        {{ 'global.update_each_stroke'|trans }}
                         <br>
-                        <strong>Type more to expand the box</strong>
+                        <strong>{{ 'global.action.type_more_expand_box'|trans }}</strong>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="d-flex">
-                        <h5>Preview</h5>
-                        <span data-loading="hide" class="text-success px-2">
-                            loaded!
+                        <span data-loading="hide" class="text-success">
+                            {{ 'global.loaded'|trans ~ ' ! ' }}
                         </span>
 
                         <span data-loading class="text-warning px-2">
-                            reloading...
+                            {{ 'global.reloading'|trans ~ '... ' }}
                             <span data-loading="delay|show">
-                                (still working)
+                                {{ '(' ~ 'global.reloading_delay'|trans ~ ')' }}
                             </span>
                         </span>
                     </div>
                     <div
                             class="markdown-preview"
-                            data-loading="addClass(low-opacity bg-maroon)"
+                            data-loading="addClass(bg-success)"
                     >
                         {{ value|markdown_to_html }}
                     </div>

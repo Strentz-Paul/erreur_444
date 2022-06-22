@@ -25,14 +25,21 @@ class LiveTextEditorComponent
     #[Assert\NotBlank]
     public string $value = '';
 
+    /**
+     * @param string $name
+     * @return void
+     */
     public function mount(string $name): void
     {
         $this->name = $name;
         $this->label = ucfirst($name);
     }
 
-//    public function getRows(): int
-//    {
-//        return max(3, floor(strlen($this->value)));
-//    }
+    /**
+     * @return int
+     */
+    public function getRows(): int
+    {
+        return max(3, floor(strlen($this->value) / 10));
+    }
 }

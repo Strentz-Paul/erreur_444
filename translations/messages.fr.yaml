@@ -14,9 +14,14 @@ global:
   days_ago: "il y a %count_days% jours"
   yesterday: Hier
   today: Aujourd'hui
+  loaded: Chargement réussi
+  reloading: En cours de chargement
+  reloading_delay: toujours en cours de chargement
+  update_each_stroke: Mis à jour lors de chaque ajout de text.
   action:
     example_singuralized: Voir un exemple
     example_plurialized: Voir des exemples
+    type_more_expand_box: Entrez plus de mots pour aggrandir la zone de text.
 article:
   label: Article
   label_plurialized: Articles

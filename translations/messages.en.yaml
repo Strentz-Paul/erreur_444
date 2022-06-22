@@ -14,9 +14,14 @@ global:
   yesterday: Yesterday
   days_ago: "%count_days% days ago"
   today: Today
+  loaded: Loaded
+  reloading: Reloading
+  reloading_delay: still working
+  update_each_stroke: Updates on "input" (each key stroke).
   action:
     example_singuralized: Check example
     example_plurialized: Check examples
+    type_more_expand_box: Type more to expand the box
 article:
   label: Article
   label_plurialized: Articles
