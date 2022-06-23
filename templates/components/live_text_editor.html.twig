@@ -1,7 +1,7 @@
 <div{{ attributes }}>
     <div class="row">
         <div class="col-12">
-            <div class="row">
+            <div class="row d-flex">
                 <div class="col-6">
                     <label class="form-label" for="markdown-input">{{ label }}</label>
 
@@ -46,7 +46,7 @@
                         <div class="col-12">
                             <div
                                     class="markdown-preview"
-                                    data-loading="addClass(bg-success)"
+                                    data-loading="addClass(bg-disabled)"
                             >
                                 {{ value|markdown_to_html }}
                             </div>
