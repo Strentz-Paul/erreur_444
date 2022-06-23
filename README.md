@@ -21,6 +21,8 @@ Pour me contacter:
 v1.0  *-- En cours de déploiement*
 
 v2.0 *-- En cours de développement*
+- Ajout d'une page à propos
+- Ajout de page de description de l'auteur de l'article
 - Ajouter un dark theme *-- En cours de développement*
 - Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page editeur markdown ??)
 - Stocker les articles dans le [cache Sf](https://symfony.com/doc/5.4/the-fast-track/fr/21-cache.html) voir Varnish afin de gagner en performance d'affichage
