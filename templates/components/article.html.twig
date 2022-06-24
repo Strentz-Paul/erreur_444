@@ -1,6 +1,6 @@
 {% set pathToArticle = tagSlug is defined and tagSlug is not null ? path('article_with_tag', {'slugTag' : tagSlug, 'slug' : slug }) : path('article_index', {'slug' : slug}) %}
 <div class="row{% if shortContent is same as true %} articles--article-short-container{% endif %} m-b-20">
-    <div class="col-12 {% if isSearchContext is same as false %}col-md-6 offset-md-3{% else %}col-md-10 offset-md-1{% endif%} m-b-20">
+    <div class="col-12 {% if isSearchContext is same as false %}col-lg-6 offset-lg-3{% else %}col-lg-10 offset-lg-1{% endif%} m-b-20">
         <a href="{{ pathToArticle }}" class="articles--article-link">
         <div class="row m-b-5">
             <div class="col-6 articles--article-short-date">

@@ -1,0 +1,44 @@
+.a-propos--container {
+  .a-propos--title-container {
+    .a-propos--title {
+      font-weight: 900;
+      margin: 20px;
+      text-align: right;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+    }
+  }
+  .a-propos--body-container{
+    .a-propos--logo {
+      color: white;
+      background-color: black;
+      padding: 20px 30px;
+      font-size: 2.5em;
+      font-weight: 900;
+      font-family: 'bakbak One', sans-serif;
+      border-radius: 20px;
+    }
+    .a-propos--body-text{
+      padding: 30px;
+      text-align: justify;
+      .a-propos--sub-title{
+        font-weight: 700;
+      }
+      .divider {
+        margin: 10px 0;
+        width: 100px;
+        text-align: left;
+        height: 3px;
+        color: black;
+        opacity: 1;
+      }
+      .a-propos--body-content {
+        &.text-bold, .text-bold {
+          font-weight: bold;
+        }
+      }
+    }
+
+  }
+
+}

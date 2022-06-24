@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 col-lg-8 offset-lg-2 a-propos--container">
+            <div class="row">
+                <div class="col-12 a-propos--title-container">
+                    <h1 class="a-propos--title">{{ 'global.a-propos'|trans }}</h1>
+                </div>
+            </div>
+            <div class="row m-t-40">
+                <div class="col-12 a-propos--body-container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
+                            <div class="a-propos--logo">ERREUR 444</div>
+                        </div>
+                        <div class="col-12 col-lg-6 a-propos--body-text">
+                            {{ 'a-propos.description'|trans|raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
