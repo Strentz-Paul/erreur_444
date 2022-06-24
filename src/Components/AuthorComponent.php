@@ -9,7 +9,7 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent('author')]
 class AuthorComponent
 {
-    public string $displayName;
+    public string $slug;
 
     public function __construct(
         private UserManagerInterface $userManager
@@ -20,6 +20,6 @@ class AuthorComponent
      */
     public function getAuthor(): ?UserVm
     {
-        return $this->userManager->findOneByDisplayName($this->displayName);
+        return $this->userManager->findOneBySlug($this->slug);
     }
 }

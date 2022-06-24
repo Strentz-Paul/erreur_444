@@ -15,8 +15,8 @@ interface UserManagerInterface
     public function createOrUpdate(User $user, bool $flush = true): void;
 
     /**
-     * @param string $displayName
+     * @param string $slug
      * @return User|null
      */
-    public function findOneByDisplayName(string $displayName): ?UserVM;
+    public function findOneBySlug(string $slug): ?UserVM;
 }

@@ -9,7 +9,7 @@ final class UserVm
 {
     private string $displayName;
     private string $email;
-    private string $description;
+    private ?string $description;
     private Collection $articles;
     private ?string $linkedinPath;
     private ?string $twitterPath;

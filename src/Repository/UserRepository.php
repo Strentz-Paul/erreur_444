@@ -60,45 +60,45 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
 
     /**
-     * @param string $displayName
+     * @param string $slug
      * @return User|null
      * @throws NonUniqueResultException
      */
-    public function findOneByDisplayName(string $displayName): ?User
+    public function findOneBySlug(string $slug): ?User
     {
         $uAlias = DoctrineHelper::ALIAS_USER;
         $query = $this->createQueryBuilder($uAlias);
-        self::addDisplayNameConstraint($query, $displayName, $uAlias);
+        self::addSlugConstraint($query, $slug, $uAlias);
         return $query->getQuery()->getOneOrNullResult();
     }
 
     /**
      * @param QueryBuilder $query
-     * @param string $displayName
+     * @param string $slug
      * @param string $uAlias
      * @return QueryBuilder
      */
-    public static function addDisplayNameConstraint(
+    public static function addSlugConstraint(
         QueryBuilder $query,
-        string $displayName,
+        string $slug,
         string $uAlias = DoctrineHelper::ALIAS_USER
     ): QueryBuilder {
-        return self::addDisplayNameWhere($query, $displayName, $uAlias);
+        return self::addSlugWhere($query, $slug, $uAlias);
     }
 
     /**
      * @param QueryBuilder $query
-     * @param string $displayName
+     * @param string $slug
      * @param string $uAlias
      * @return QueryBuilder
      */
-    public static function addDisplayNameWhere(
+    public static function addSlugWhere(
         QueryBuilder $query,
-        string $displayName,
+        string $slug,
         string $uAlias = DoctrineHelper::ALIAS_USER
     ): QueryBuilder {
-        $query->andWhere("$uAlias.displayName = :displayName")
-            ->setParameter("displayName", $displayName);
+        $query->andWhere("$uAlias.slug = :slug")
+            ->setParameter("slug", $slug);
         return $query;
     }
 }

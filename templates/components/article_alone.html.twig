@@ -40,7 +40,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 article-alone--author">{{ auteur }}</div>
+            <div class="col-12 article-alone--author">
+                <span data-bs-toggle="tooltip" data-bs-placement="right" title="{{ 'author.tooltip'|trans }}"><button type="button" data-bs-toggle="collapse" data-bs-target="#collapsed_auteur" aria-expanded="false" aria-controls="collapsed_auteur">{{ auteur }}</button></span>
+            </div>
+            <div class="collapse author--description-container" id="collapsed_auteur">
+                <div class="card card-body">
+                    {{ component('author', {
+                        slug : auteurSlug
+                    }) }}
+                </div>
+            </div>
         </div>
         <hr class="article--hr-comment">
         <div class="row m-t-40">

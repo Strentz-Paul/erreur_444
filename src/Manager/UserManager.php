@@ -48,9 +48,9 @@ final class UserManager implements UserManagerInterface
     /**
      * {@inheritDoc}
      */
-    public function findOneByDisplayName(string $displayName): ?UserVm
+    public function findOneBySlug(string $slug): ?UserVm
     {
-        $user = $this->userRepository->findOneByDisplayName($displayName);
+        $user = $this->userRepository->findOneBySlug($slug);
         if ($user === null) {
             return null;
         }

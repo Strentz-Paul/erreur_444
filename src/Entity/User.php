@@ -44,6 +44,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', nullable: true)]
     private $githubProfilLink;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
+    private $slug;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -254,6 +257,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGithubProfilLink($githubProfilLink)
     {
         $this->githubProfilLink = $githubProfilLink;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     * @return User
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
         return $this;
     }
 }
