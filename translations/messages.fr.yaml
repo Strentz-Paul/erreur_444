@@ -58,3 +58,4 @@ a-propos:
   description: <h2 class="a-propos--sub-title">Si vous êtes arrivé là,</h2><hr class="divider"><p class="a-propos--body-content">c'est sans doute que vous voulez savoir quel est <span class="text-bold">le but de blog</span>, ou peut-être découvrir qui se cache <span class="text-bold">derrière ces articles</span>. Bon réflex.</p><p class="a-propos--body-content">Je vais faire court.</p><p class="a-propos--body-content text-bold">Ce blog est un petit récapitulatif des implémentation qui, à mon sens, ne sont pas assez detaillés sur d'autres sites.</p><p class="a-propos--body-content">C'est aussi un journal de bord de mes découvertes. Cela peut être un portfolio pour certains, un excès d'ego pour d'autres, mais c'est surtout un side projet qui m'aide à monter en compétences.</p>
 author:
   tooltip: En savoir plus sur l'auteur
+  contact: Contacter

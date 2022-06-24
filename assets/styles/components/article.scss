@@ -69,6 +69,10 @@
   .article-alone--author {
     font-size: 0.9em;
     text-align: right;
+    .article-alone--author-btn {
+      background-color: inherit;
+      border: none;
+    }
   }
   .article-alone--date {
     font-size: 0.7em;
