@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $twitterProfilLink;
 
     #[ORM\Column(type: 'string', nullable: true)]
-    private $githubProfilLikn;
+    private $githubProfilLink;
 
     public function __construct()
     {
@@ -242,18 +242,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return mixed
      */
-    public function getGithubProfilLikn()
+    public function getGithubProfilLink()
     {
-        return $this->githubProfilLikn;
+        return $this->githubProfilLink;
     }
 
     /**
-     * @param mixed $githubProfilLikn
+     * @param mixed $githubProfilLink
      * @return User
      */
-    public function setGithubProfilLikn($githubProfilLikn)
+    public function setGithubProfilLink($githubProfilLink)
     {
-        $this->githubProfilLikn = $githubProfilLikn;
+        $this->githubProfilLink = $githubProfilLink;
         return $this;
     }
 }

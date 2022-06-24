@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220624112502 extends AbstractMigration
+final class Version20220624130523 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20220624112502 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user CHANGE github_profil_likn github_profil_link VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE user ADD description LONGTEXT NOT NULL, ADD linkedin_profil_link VARCHAR(255) DEFAULT NULL, ADD twitter_profil_link VARCHAR(255) DEFAULT NULL, ADD github_profil_link VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user CHANGE github_profil_link github_profil_likn VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE user DROP description, DROP linkedin_profil_link, DROP twitter_profil_link, DROP github_profil_link');
     }
 }
