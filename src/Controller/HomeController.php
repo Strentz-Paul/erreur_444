@@ -39,4 +39,15 @@ class HomeController extends AbstractController
         $response->headers->set('Content-type', 'text/xml');
         return $response;
     }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    #[Route('/a-propos', name: 'a_propos')]
+    public function aProposAtion(
+        Request $request,
+    ): Response {
+       return $this->render('home/a-propos.html.twig');
+    }
 }
