@@ -3,7 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Helper\DoctrineHelper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -56,28 +59,46 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->add($user, true);
     }
 
-//    /**
-//     * @return User[] Returns an array of User objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('u.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @param string $slug
+     * @return User|null
+     * @throws NonUniqueResultException
+     */
+    public function findOneBySlug(string $slug): ?User
+    {
+        $uAlias = DoctrineHelper::ALIAS_USER;
+        $query = $this->createQueryBuilder($uAlias);
+        self::addSlugConstraint($query, $slug, $uAlias);
+        return $query->getQuery()->getOneOrNullResult();
+    }
 
-//    public function findOneBySomeField($value): ?User
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @param QueryBuilder $query
+     * @param string $slug
+     * @param string $uAlias
+     * @return QueryBuilder
+     */
+    public static function addSlugConstraint(
+        QueryBuilder $query,
+        string $slug,
+        string $uAlias = DoctrineHelper::ALIAS_USER
+    ): QueryBuilder {
+        return self::addSlugWhere($query, $slug, $uAlias);
+    }
+
+    /**
+     * @param QueryBuilder $query
+     * @param string $slug
+     * @param string $uAlias
+     * @return QueryBuilder
+     */
+    public static function addSlugWhere(
+        QueryBuilder $query,
+        string $slug,
+        string $uAlias = DoctrineHelper::ALIAS_USER
+    ): QueryBuilder {
+        $query->andWhere("$uAlias.slug = :slug")
+            ->setParameter("slug", $slug);
+        return $query;
+    }
 }

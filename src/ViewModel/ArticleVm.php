@@ -18,6 +18,7 @@ final class ArticleVm
     private Collection $tags;
     private string $auteur;
     private Collection $commentaires;
+    private string $auteurSlug;
 
     public function __construct(
         int $id,
@@ -27,6 +28,7 @@ final class ArticleVm
         DateTimeInterface $createdAt,
         string $content,
         string $auteur,
+        string $auteurSlug
     ) {
         $this->id = $id;
         $this->slug = $slug;
@@ -36,6 +38,7 @@ final class ArticleVm
         $this->auteur = $auteur;
         $this->tags = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
+        $this->auteurSlug = $auteurSlug;
     }
 
     /**
@@ -130,5 +133,23 @@ final class ArticleVm
     private function convertToShort(string $content): string
     {
         return ArticleHelper::convertToShort($content, 500);
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuteurSlug(): string
+    {
+        return $this->auteurSlug;
+    }
+
+    /**
+     * @param string $auteurSlug
+     * @return ArticleVm
+     */
+    public function setAuteurSlug(string $auteurSlug): ArticleVm
+    {
+        $this->auteurSlug = $auteurSlug;
+        return $this;
     }
 }

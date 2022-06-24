@@ -23,4 +23,5 @@ class ArticleAloneComponent
     public Collection $commentaires;
     public ?string $tagSlug;
     public FormView $form;
+    public string $auteurSlug;
 }

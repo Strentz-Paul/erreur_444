@@ -415,7 +415,8 @@ class ArticleRepository extends ServiceEntityRepository
             "$aAlias.titre, " .
             "$aAlias.createdAt, " .
             "$aAlias.content, " .
-            "$userAlias.displayName" .
+            "$userAlias.displayName, " .
+            "$userAlias.slug" .
             ")");
         self::addUserConstraint($query, null, $aAlias, $userAlias);
         return $query;

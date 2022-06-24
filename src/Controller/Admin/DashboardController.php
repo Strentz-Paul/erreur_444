@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use App\Entity\Commentaire;
 use App\Entity\Tag;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -51,6 +52,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Articles', 'fas fa-newspaper', Article::class);
         yield MenuItem::linkToCrud('Tags', 'fas fa-tags', Tag::class);
         yield MenuItem::linkToCrud('Commentaires', 'fas fa-comments', Commentaire::class);
+        yield MenuItem::linkToCrud('Auteurs', 'fas fa-user', User::class);
     }
 
     public function configureCrud(): Crud

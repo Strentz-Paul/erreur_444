@@ -32,6 +32,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Article::class)]
     private $articles;
 
+    #[ORM\Column(type: 'text')]
+    private $description;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    private $linkedinProfilLink;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    private $twitterProfilLink;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    private $githubProfilLink;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
+    private $slug;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -170,6 +185,96 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             }
         }
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinkedinProfilLink()
+    {
+        return $this->linkedinProfilLink;
+    }
+
+    /**
+     * @param mixed $linkedinProfilLink
+     * @return User
+     */
+    public function setLinkedinProfilLink($linkedinProfilLink)
+    {
+        $this->linkedinProfilLink = $linkedinProfilLink;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTwitterProfilLink()
+    {
+        return $this->twitterProfilLink;
+    }
+
+    /**
+     * @param mixed $twitterProfilLink
+     * @return User
+     */
+    public function setTwitterProfilLink($twitterProfilLink)
+    {
+        $this->twitterProfilLink = $twitterProfilLink;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGithubProfilLink()
+    {
+        return $this->githubProfilLink;
+    }
+
+    /**
+     * @param mixed $githubProfilLink
+     * @return User
+     */
+    public function setGithubProfilLink($githubProfilLink)
+    {
+        $this->githubProfilLink = $githubProfilLink;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     * @return User
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
         return $this;
     }
 }
