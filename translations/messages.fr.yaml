@@ -18,7 +18,11 @@ global:
   reloading: En cours de chargement
   reloading_delay: toujours en cours de chargement
   update_each_stroke: Mis à jour lors de chaque ajout de text.
+  description_label: Description
   a-propos: À propos
+  linkedin: LinkedIn
+  twitter: Twitter
+  github: GitHub
   action:
     example_singuralized: Voir un exemple
     example_plurialized: Voir des exemples

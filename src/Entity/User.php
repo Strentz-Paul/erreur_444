@@ -32,6 +32,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Article::class)]
     private $articles;
 
+    #[ORM\Column(type: 'text')]
+    private $description;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    private $linkedinProfilLink;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    private $twitterProfilLink;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    private $githubProfilLink;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -170,6 +182,78 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             }
         }
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinkedinProfilLink()
+    {
+        return $this->linkedinProfilLink;
+    }
+
+    /**
+     * @param mixed $linkedinProfilLink
+     * @return User
+     */
+    public function setLinkedinProfilLink($linkedinProfilLink)
+    {
+        $this->linkedinProfilLink = $linkedinProfilLink;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTwitterProfilLink()
+    {
+        return $this->twitterProfilLink;
+    }
+
+    /**
+     * @param mixed $twitterProfilLink
+     * @return User
+     */
+    public function setTwitterProfilLink($twitterProfilLink)
+    {
+        $this->twitterProfilLink = $twitterProfilLink;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGithubProfilLikn()
+    {
+        return $this->githubProfilLink;
+    }
+
+    /**
+     * @param mixed $githubProfilLikn
+     * @return User
+     */
+    public function setGithubProfilLikn($githubProfilLikn)
+    {
+        $this->githubProfilLink = $githubProfilLikn;
         return $this;
     }
 }
