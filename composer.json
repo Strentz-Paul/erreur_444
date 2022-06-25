@@ -87,11 +87,13 @@
             "bin/local-php-security-checker_1.0.0_linux_amd64": "script"
         },
         "post-install-cmd": [
-            "@auto-scripts",
-            "php bin/console doctrine:migrations:migrate"
+            "@auto-scripts"
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "compile": [
+            "php bin/console doctrine:migrations:migrate"
         ]
     },
     "conflict": {
