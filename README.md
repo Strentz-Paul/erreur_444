@@ -22,8 +22,6 @@ Pour me contacter:
 
 ----
 ## ROADMAP
-v1.0  *-- En cours de déploiement*
-
 v2.0 *-- En cours de développement*
 - Ajouter un dark theme *-- En cours de développement*
 - Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page editeur markdown ??)
