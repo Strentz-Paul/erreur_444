@@ -1,7 +1,11 @@
 # Projet - Erreur 444
+
 **Description :**
 Un blog simple servant de bac à sable afin tester les nouvelles fonctionnalités de Symfony 5 et de php 8.1.
 
+### Le site est actuellement visible [ici](https://erreur-444.herokuapp.com/)
+
+---
 ## Installation
 ### Pré-requis
 - Docker
