@@ -4,8 +4,10 @@
   text-align: right;
   text-transform: uppercase;
   letter-spacing: 5px;
+  color: var(--text-color);
 }
 .features--container {
+  color: var(--text-color);
   padding: 10px;
   margin-top: 20px ;
   .feature--alone-container {
@@ -22,7 +24,7 @@
     }
     .feature--alone-link {
       text-decoration: none;
-      color: initial;
+      color: inherit;
     }
   }
   .feature--alone-footer {
@@ -30,7 +32,7 @@
     text-align: right;
     .feature--alone-link-to-more {
       text-decoration: none;
-      color: initial;
+      color: inherit;
       &:hover {
         border-bottom: 1px solid var(--text-color);
       }
@@ -38,6 +40,7 @@
   }
 }
 .feature--page {
+  color: var(--text-color);
   .feature--page-title {
     text-transform: uppercase;
     text-align: right;
