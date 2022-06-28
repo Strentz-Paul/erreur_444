@@ -1,5 +1,5 @@
 .author--description-container {
-  background-color: #FBFBFB;
+  background-color: var(--background-color);
   border: none;
   width: 30%;
   margin-left: 70%;
@@ -18,7 +18,7 @@
     padding: 10px;
   }
   .author--link-mail {
-    color: black;
+    color: var(--text-color);
     text-decoration: none;
   }
 }

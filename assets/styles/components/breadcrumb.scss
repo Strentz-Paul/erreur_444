@@ -2,7 +2,7 @@ nav {
   .breadcrumb {
     .breadcrumb-item {
       .link-breadcrumb {
-        color: #000 !important;
+        color: var(--text-color) !important;
         text-decoration: none !important;
       }
     }

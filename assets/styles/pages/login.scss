@@ -5,8 +5,8 @@
 .login--container {
   padding: 50px 40px;
   border-radius: 50px;
-  color: #000;
-  background: linear-gradient(145deg, #e2e2e2, #ffffff);
-  box-shadow:  34px 34px 77px #d5d5d5,
-              -34px -34px 77px #ffffff;
+  color: var(--text-color);
+  background: var(--login-background);
+  box-shadow:  34px 34px 77px var(--login-shadow-1),
+              -34px -34px 77px var(--login-shadow-2);
 }
