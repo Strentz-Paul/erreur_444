@@ -4,7 +4,7 @@
   .article--commentaire-alone-container {
     margin-bottom: 20px;
     padding: 20px;
-    background-color: $article-alone-background-color;
+    background-color: var(--article-alone-background-color);
     border-radius: 10px;
     .article--commentaire-alone-header {
       font-size: 12px;
@@ -29,7 +29,7 @@
     }
     .article-alone--form-commentaire-username-input {
       .field--text {
-        border: 1px solid $border-field-input;
+        border: 1px solid var(--border-field-input);
         border-radius: 5px;
         width: 100%;
         padding: 5px 5px 5px 10px;
@@ -63,7 +63,7 @@
     text-align: right;
     .field--submit {
       background: var(--logo-background-color) !important;
-      color: white;
+      color: var(--text-commentaire);
       font-weight: 700;
       border: 1px solid var(--logo-background-color);
       transition: all 0.3s;
