@@ -4,7 +4,7 @@
   .article--commentaire-alone-container {
     margin-bottom: 20px;
     padding: 20px;
-    background-color: rgba(4,4,4, 0.05);
+    background-color: $article-alone-background-color;
     border-radius: 10px;
     .article--commentaire-alone-header {
       font-size: 12px;
@@ -29,7 +29,7 @@
     }
     .article-alone--form-commentaire-username-input {
       .field--text {
-        border: 1px solid #cfcfcf;
+        border: 1px solid $border-field-input;
         border-radius: 5px;
         width: 100%;
         padding: 5px 5px 5px 10px;
@@ -47,7 +47,7 @@
 
     .article-alone--form-commentaire-content-input {
       .field--text-area {
-        border: 1px solid #cfcfcf;
+        border: 1px solid var(--border-field-input);
         border-radius: 5px;
         width: 100%;
         height: 100px;
@@ -55,23 +55,23 @@
         resize: none;
       }
       :focus-visible {
-        outline-color: rgba(0, 0, 0, 0.6) !important;
+        outline-color: var(--border-field-outline) !important;
       }
     }
   }
   .article-alone--form-commentaire-submit {
     text-align: right;
     .field--submit {
-      background: #000 !important;
+      background: var(--logo-background-color) !important;
       color: white;
       font-weight: 700;
-      border: 1px solid #000;
+      border: 1px solid var(--logo-background-color);
       transition: all 0.3s;
       &:hover {
-        background: #222 !important;
+        background: var(--text-hover-color) !important;
       }
       &:focus {
-        box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.4);;
+        box-shadow: var(--box-shadow-field);
       }
     }
   }

@@ -11,7 +11,7 @@
   .feature--alone-container {
     margin-bottom: 50px;
     .feature--alone-title {
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid var(--text-color);
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 3px;
@@ -32,7 +32,7 @@
       text-decoration: none;
       color: initial;
       &:hover {
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid var(--text-color);
       }
     }
   }
@@ -76,6 +76,6 @@
   word-break: break-all;
 }
 .bg-disabled {
-  background-color: #f5f5f5;
+  background-color: var(--background-disabled);
   border-radius: 10px;
 }

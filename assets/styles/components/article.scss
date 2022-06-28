@@ -12,7 +12,7 @@
   }
   .articles--article-short-container {
     .articles--article-short-title {
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid var(--text-color);
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 3px;
@@ -20,7 +20,7 @@
       margin: 0 0 5px 0;
     }
     .articles--article-short-date {
-      color: dimgrey;
+      color: var(--short-color-commentaire);
       font-size: 0.7em;
     }
     .articles--article-short-tags-container {
@@ -38,7 +38,7 @@
       text-align: justify;
     }
     .articles--article-short-commentaires {
-      background-color: dimgrey !important;
+      background-color: var(--short-color-commentaire) !important;
     }
   }
 }
@@ -80,13 +80,13 @@
     text-align: right;
   }
   .article-alone--count-commentaires {
-    color: #FFF;
-    background-color: rgba(0,0,0,0.5);
+    color: var(--text-commentaire);
+    background-color: var(--background-commentaire);
     margin-left: 10px;
   }
 }
 .article--hr-comment {
   margin: 50px 0 20px 0;
   border-width: 2px;
-  border-color: black !important;
+  border-color: var(--text-color) !important;
 }
