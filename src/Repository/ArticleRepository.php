@@ -210,9 +210,9 @@ class ArticleRepository extends ServiceEntityRepository
 
     /**
      * @param int $articleId
-     * @return ArrayCollection
+     * @return Collection
      */
-    public function findAllTagsByArticleId(int $articleId)
+    public function findAllTagsByArticleId(int $articleId): Collection
     {
         $tAlias = DoctrineHelper::ALIAS_TAG;
         $vm = TagVm::class;
@@ -229,9 +229,9 @@ class ArticleRepository extends ServiceEntityRepository
 
     /**
      * @param int $articleId
-     * @return ArrayCollection
+     * @return Collection
      */
-    public function findAllCommentairesByArticleId(int $articleId)
+    public function findAllCommentairesByArticleId(int $articleId): Collection
     {
         $comAlias = DoctrineHelper::ALIAS_COMMENTAIRE;
         $vm = CommentaireVm::class;
