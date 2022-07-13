@@ -1,0 +1,55 @@
+<template id="infinite_scroll_template_spinner">
+    <div class="lds-ripple">
+        <div></div>
+        <div></div>
+    </div>
+</template>
+
+<script type="text/javascript">
+    function infiniteScrollWithPagination(id, action, direction) {
+        let ajaxSpinner = $('#infinite_scroll_template_spinner').html();
+        let $parent = $('#' + id).parent();
+        let elementReferenceId = id + '_element_reference';
+        let elementReference = '<div class="element-reference ' + direction + '" id="' + elementReferenceId + '"></div>';
+
+        if (direction === 'up') {
+            $parent.prepend(elementReference)
+            if ($parent.find('.infinite_scroll__element').length <= 1) {
+                $parent.scrollTop($parent.prop('scrollHeight'));
+            }
+        }
+        if (direction === 'down') {
+            $parent.append(elementReference)
+        }
+
+        let $elementReference = $('#' + elementReferenceId);
+        let observer = new IntersectionObserver((entry, observer) => {
+            if (entry[0].intersectionRatio > 0) {
+                $elementReference.html(ajaxSpinner);
+                $elementReference[0].setAttribute('data-parent-height', $parent[0].scrollHeight);
+                if (direction === 'down') {
+                    $parent.scrollTop($parent[0].scrollHeight);
+                }
+                $.get(action,
+                    function(data) {
+                        if (direction === 'up') {
+                            $parent.prepend(data);
+                            $parent.scrollTop($parent[0].scrollHeight - $elementReference.data('parent-height') + 100);
+                        }
+                        if (direction === 'down') {
+                            $parent.append(data);
+                        }
+                    }
+                ).fail(function (data) {
+                    if (!ajaxErrorReloadIfLoggedOut(data)) {
+                        $elementReference.html(data);
+                    }
+                }).done(function () {
+                    $elementReference.remove();
+                })
+            }
+        })
+
+        observer.observe($elementReference[0]);
+    }
+</script>
