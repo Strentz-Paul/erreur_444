@@ -22,13 +22,10 @@ Pour me contacter:
 
 ----
 ## ROADMAP
-v1.0  *-- En cours de déploiement*
-
 v2.0 *-- En cours de développement*
-- Ajouter un dark theme *-- En cours de développement*
 - Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page editeur markdown ??)
 - Stocker les articles dans le [cache Sf](https://symfony.com/doc/5.4/the-fast-track/fr/21-cache.html) voir Varnish afin de gagner en performance d'affichage
-- Paginer les articles en infinite scroll
+- Paginer les articles en infinite scroll *-- En cours de développement*
 - Ajout d'analytics avec [matomo](https://matomo.org/)
 - Créer un générateur de bionic reading?
 
