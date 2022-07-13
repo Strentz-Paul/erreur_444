@@ -27,6 +27,7 @@
                 {% endblock %}
             </main>
         </div>
+        {% include "layouts/components/infinite-scroll/infinite-scroll--js.html.twig" %}
         <script type="text/javascript">
             const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
             const currentTheme = localStorage.getItem('theme');

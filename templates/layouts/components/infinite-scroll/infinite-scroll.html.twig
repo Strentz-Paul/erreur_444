@@ -1,0 +1,27 @@
+{#
+params: [
+    {
+        'items': PagerInterface,
+        'route': string,
+        'route_params': ?{},
+        'direction': 'up' || 'down',
+    }
+]
+
+#}
+{% set route_params = route_params|default([]) %}
+{% set id = 'infinite_scroll_' ~ random() %}
+{% if items.hasNextPage and items.currentPage != items.nextPage %}
+    {% set route_params = route_params|merge({'page': items.nextPage}) %}
+{% endif %}
+{% set action = path(route, route_params) %}
+
+{% if items.hasNextPage == true  %}
+        <div id="{{ id }}" class="infinite_scroll__element"></div>
+    {% endif %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            infiniteScrollWithPagination("{{ id }}", "{{ action|e('js') }}", "{{ direction }}");
+        })
+    </script>
+{% endif %}
