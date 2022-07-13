@@ -82,7 +82,8 @@ final class ArticleManager implements ArticleManagerInterface
                 $article->getTitre(),
                 $article->getCreatedAt(),
                 $article->getContent(),
-                (string)$article->getUser()
+                (string)$article->getUser(),
+                $article->getUser()?->getSlug()
             );
             $vms->add($vm);
         }
