@@ -11,5 +11,5 @@ class TagComponent
     public string $intitule;
     public string $color;
     public string $class;
-    public string $textcolor;
+    public string $textColor;
 }
