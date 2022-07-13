@@ -27,7 +27,7 @@ class TagFixtures extends AbstractBaseFixtures implements DependentFixtureInterf
             $tag->setIntitule($intitule)
                 ->setSlug($slug)
                 ->setColor($faker->hexColor);
-            $numberOfArticles = random_int(1, 15);
+            $numberOfArticles = random_int(1, self::NUMBER_OF_ARTICLES);
             for ($ii = 0; $ii < $numberOfArticles; $ii++) {
                 /** @var Article $article */
                 $article = $this->getReference(self::ARTICLE_REF . $ii);
