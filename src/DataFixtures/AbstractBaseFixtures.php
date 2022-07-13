@@ -8,9 +8,9 @@ use Faker\Generator;
 
 abstract class AbstractBaseFixtures extends Fixture
 {
-    public const NUMBER_OF_ARTICLES = 20;
-    public const NUMBER_MAX_OF_COMMENT = 5;
-    public const NUMBER_OF_TAGS = 10;
+    public const NUMBER_OF_ARTICLES = 150;
+    public const NUMBER_MAX_OF_COMMENT = 10;
+    public const NUMBER_OF_TAGS = 25;
     public const USER_REF = 'user';
     public const ARTICLE_REF = 'article_';
     public const COMMENT_REF = '_commentaire_';

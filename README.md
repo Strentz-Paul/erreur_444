@@ -29,7 +29,6 @@ v2.0 *-- En cours de développement*
 - Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page editeur markdown ??)
 - Stocker les articles dans le [cache Sf](https://symfony.com/doc/5.4/the-fast-track/fr/21-cache.html) voir Varnish afin de gagner en performance d'affichage
 - Paginer les articles en infinite scroll
-- Upload d'image pour Article... (pas certains)
 - Ajout d'analytics avec [matomo](https://matomo.org/)
 - Créer un générateur de bionic reading?
 
