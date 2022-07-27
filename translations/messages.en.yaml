@@ -1,4 +1,6 @@
 global:
+  return_to_site: Back to the website
+  blog_label: Blog
   author_label: Author
   created_at: Created at
   is_published: Published
@@ -23,6 +25,8 @@ global:
     example_singuralized: Check example
     example_plurialized: Check examples
     type_more_expand_box: Type more to expand the box
+  entreprise:
+    label: Enterprise
 article:
   label: Article
   label_plurialized: Articles
@@ -52,3 +56,9 @@ feature:
       placeholder_input: Enter text in **Markdown** format here
 a-propos:
   description: <h2 class="a-propos--sub-title">If you got there,</h2><hr class="divider"><p class="a-propos--body-content">it's probably that you want to know what <span class="text-bold">the purpose of blogging is</span>, or maybe find out <span class="text-bold">who is behind these articles</span>. Good reflex.</p><p class="a-propos--body-content">I will make it short.</p><p class="a-propos--body-content text-bold">This blog is a small summary of implementations which, in my opinion, are not detailed enough on other sites.</p><p class="a-propos--body-content">It is also a logbook of my discoveries. It can be a portfolio for some, an excess of ego for others, but it's above all a side project that helps me build skills.</p>
+admin:
+  compta:
+    label: Accounting
+  dashboard:
+    label: Dashboard
+  label: Admin
