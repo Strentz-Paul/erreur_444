@@ -1,4 +1,6 @@
 global:
+  return_to_site: Retour au site
+  blog_label: Blog
   author_label: Auteur
   created_at: Créé le
   is_published: Publié
@@ -27,6 +29,8 @@ global:
     example_singuralized: Voir un exemple
     example_plurialized: Voir des exemples
     type_more_expand_box: Entrez plus de mots pour aggrandir la zone de text.
+  entreprise:
+    label: Entreprise
 article:
   label: Article
   label_plurialized: Articles
@@ -59,3 +63,9 @@ a-propos:
 author:
   tooltip: En savoir plus sur l'auteur
   contact: Contacter
+admin:
+  compta:
+    label: Comptabilité
+  dashboard:
+    label: Accueil
+  label: Admin

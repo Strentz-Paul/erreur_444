@@ -48,11 +48,14 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         //yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linktoUrl('Back to the website', 'fas fa-person-walking-arrow-right', $this->generateUrl('homepage'));
+        yield MenuItem::linktoUrl('global.return_to_site', 'fas fa-person-walking-arrow-right', $this->generateUrl('homepage'));
+        yield MenuItem::section('global.blog_label', 'fas fa-blog');
         yield MenuItem::linkToCrud('Articles', 'fas fa-newspaper', Article::class);
         yield MenuItem::linkToCrud('Tags', 'fas fa-tags', Tag::class);
         yield MenuItem::linkToCrud('Commentaires', 'fas fa-comments', Commentaire::class);
         yield MenuItem::linkToCrud('Auteurs', 'fas fa-user', User::class);
+        yield MenuItem::section('global.entreprise.label', 'fas fa-money-check-dollar');
+        yield MenuItem::linktoUrl('admin.compta.label', 'fas fa-hand-holding-dollar', $this->generateUrl('admin_comptabilite_index'));
     }
 
     public function configureCrud(): Crud
