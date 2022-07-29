@@ -45,6 +45,9 @@ db-generate: ## generate migration file
 db-diff: ## generate migration file based on diff
 	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php bin/console doctrine:migration:diff'
 
+db-drop: ## generate migration file based on diff
+	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php bin/console doctrine:database:drop --force'
+
 composer-install: ## Install composer vendor
 	$(DOCKER_COMPOSE_DEV) run --rm php bash -ci 'php -d memory_limit=4G bin/composer install'
 

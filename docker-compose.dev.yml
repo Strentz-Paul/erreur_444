@@ -35,7 +35,6 @@ services:
 
   php:
     env_file:
-      - .env.local
       - .env
     environment:
       PHP_EXTENSION_XDEBUG: 1
