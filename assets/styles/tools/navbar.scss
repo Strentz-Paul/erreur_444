@@ -29,6 +29,9 @@
 .link.nav-link {
   font-weight: 700 !important;
   letter-spacing: 3px;
+  &.active {
+    color: var(--text-color);
+  }
   &:hover {
     text-decoration: underline 4px;
   }

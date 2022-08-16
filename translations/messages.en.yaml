@@ -59,6 +59,10 @@ a-propos:
 admin:
   compta:
     label: Accounting
+    entreprise:
+      name_label: Enterprise name
+      statut_juridique_label: Juridique status
+      date_creation_label: Date of creation
   dashboard:
     label: Dashboard
   label: Admin

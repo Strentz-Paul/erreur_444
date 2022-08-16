@@ -66,6 +66,10 @@ author:
 admin:
   compta:
     label: Comptabilité
+    entreprise:
+      name_label: Nom de l'entreprise
+      statut_juridique_label: Statut Juridique
+      date_creation_label: Date de création
   dashboard:
     label: Accueil
   label: Admin

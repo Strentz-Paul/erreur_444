@@ -1,4 +1,27 @@
 {% extends 'base-admin.html.twig' %}
 
 {% block body %}
+    <div class="row m-t-40">
+        <div class="col-12 col-md-6 offset-md-3">
+            <table class="table basic-color">
+                <thead>
+                    <tr>
+                        <th scope="col">{{ 'admin.compta.entreprise.name_label'|trans }}</th>
+                        <th scope="col">{{ 'admin.compta.entreprise.statut_juridique_label'|trans }}</th>
+                        <th scope="col">{{ 'admin.compta.entreprise.date_creation_label'|trans }}</th>
+                        <th scope="col">{{ 'admin.compta.entreprise.date_creation_label'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entreprise in entreprises %}
+                        <tr>
+                            <td>{{ entreprise.nom }}</td>
+                            <td>{{ entreprise.statutJuridique }}</td>
+                            <td>{{ render_date(entreprise.dateDebut, '-') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

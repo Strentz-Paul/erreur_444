@@ -3,7 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Entreprise;
+use App\Helper\DoctrineHelper;
+use App\ViewModel\EntrepriseVm;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,28 +44,52 @@ class EntrepriseRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Entreprise[] Returns an array of Entreprise objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Collection
+     */
+    public function findAllCollection(): Collection
+    {
+        $eAlias = DoctrineHelper::ALIAS_ENTREPRISE;
+        $vm = EntrepriseVm::class;
+        $query = $this->_em->createQueryBuilder();
+        $query->select("NEW $vm(" .
+            "$eAlias.id, " .
+            "$eAlias.nom, " .
+            "$eAlias.statutJuridique, " .
+            "$eAlias.dateDebut" .
+            ")");
+        $query->from(Entreprise::class, $eAlias);
+        self::addExternalConstraint($query, false, $eAlias);
+        return new ArrayCollection($query->getQuery()->getResult());
+    }
 
-//    public function findOneBySomeField($value): ?Entreprise
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @param QueryBuilder $query
+     * @param bool $isExternal
+     * @param string $eAlias
+     * @return QueryBuilder
+     */
+    public static function addExternalConstraint(
+        QueryBuilder $query,
+        bool $isExternal,
+        string $eAlias = DoctrineHelper::ALIAS_ENTREPRISE
+    ): QueryBuilder {
+        return self::addExternalWhere($query, $isExternal, $eAlias);
+    }
+
+    /**
+     * @param QueryBuilder $query
+     * @param bool $isExternal
+     * @param string $eAlias
+     * @return QueryBuilder
+     */
+    public static function addExternalWhere(
+        QueryBuilder $query,
+        bool $isExternal,
+        string $eAlias = DoctrineHelper::ALIAS_ENTREPRISE
+    ): QueryBuilder {
+        $condition = $isExternal === false ? "$eAlias.isExterne = 0" : "$eAlias.isExterne = 1";
+        $query->andWhere($condition);
+        return $query;
+    }
 }
