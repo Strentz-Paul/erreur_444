@@ -3,6 +3,7 @@
 namespace App\ViewModel;
 
 
+use App\Enum\StatutJuridiqueEnum;
 use DateTime;
 
 final class EntrepriseVm
@@ -10,7 +11,7 @@ final class EntrepriseVm
     public function __construct(
         private int $id,
         private string $nom,
-        private string $statutJuridique,
+        private StatutJuridiqueEnum $statutJuridique,
         private DateTime $dateDebut
     ){}
 
@@ -35,7 +36,7 @@ final class EntrepriseVm
      */
     public function getStatutJuridique(): string
     {
-        return $this->statutJuridique;
+        return $this->statutJuridique->value;
     }
 
     /**

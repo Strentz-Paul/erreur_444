@@ -7,7 +7,8 @@ use Doctrine\Common\Collections\Collection;
 interface EntrepriseManagerInterface
 {
     /**
+     * @param bool $showExternal
      * @return Collection
      */
-    public function getAllEntreprises(): Collection;
+    public function getAllEntreprises(bool $showExternal): Collection;
 }

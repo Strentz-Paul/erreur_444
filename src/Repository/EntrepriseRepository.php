@@ -45,9 +45,10 @@ class EntrepriseRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param bool $showExternal
      * @return Collection
      */
-    public function findAllCollection(): Collection
+    public function findAllCollection(bool $showExternal): Collection
     {
         $eAlias = DoctrineHelper::ALIAS_ENTREPRISE;
         $vm = EntrepriseVm::class;
@@ -59,7 +60,7 @@ class EntrepriseRepository extends ServiceEntityRepository
             "$eAlias.dateDebut" .
             ")");
         $query->from(Entreprise::class, $eAlias);
-        self::addExternalConstraint($query, false, $eAlias);
+        self::addExternalConstraint($query, $showExternal, $eAlias);
         return new ArrayCollection($query->getQuery()->getResult());
     }
 

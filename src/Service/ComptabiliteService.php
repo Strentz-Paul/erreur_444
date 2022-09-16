@@ -15,8 +15,8 @@ final class ComptabiliteService implements ComptabiliteServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function getAllEntreprises(): Collection
+    public function getAllEntreprises(bool $showExternal): Collection
     {
-        return $this->entrepriseManager->getAllEntreprises();
+        return $this->entrepriseManager->getAllEntreprises($showExternal);
     }
 }

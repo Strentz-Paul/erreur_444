@@ -32,9 +32,9 @@ final class EntrepriseManager implements EntrepriseManagerInterface
     /**
      * @inheritDoc
      */
-    public function getAllEntreprises(): Collection
+    public function getAllEntreprises(bool $showExternal): Collection
     {
-        return $this->entrepriseRepo->findAllCollection();
+        return $this->entrepriseRepo->findAllCollection($showExternal);
     }
 
 }

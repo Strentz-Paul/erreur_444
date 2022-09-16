@@ -70,6 +70,13 @@ admin:
       name_label: Nom de l'entreprise
       statut_juridique_label: Statut Juridique
       date_creation_label: Date de création
+      create:
+        btn-create: Créer une entreprise
+        is_external: Est-ce une entreprise externe?
+      show-external: Voir les entreprises externes
+      show-mine: Voir mes entreprises
+      label: Entreprise
+      label_plurialized: Entreprises
   dashboard:
     label: Accueil
   label: Admin

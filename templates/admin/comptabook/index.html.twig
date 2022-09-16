@@ -1,6 +1,25 @@
 {% extends 'base-admin.html.twig' %}
 
 {% block body %}
+    {% set text_btn_external = is_external_context is same as false ? 'admin.compta.entreprise.show-external' : 'admin.compta.entreprise.show-mine' %}
+    {% set enterprise_show_path = is_external_context is same as false ? path('admin_comptabilite_index', {'show-external' : true}) : path('admin_comptabilite_index') %}
+    <div class="row">
+        <div class="col-12">
+            <h1 class="articles--title">{{ 'admin.compta.label'|trans }}</h1>
+        </div>
+    </div>
+    <div class="row m-t-40">
+        <div class="col-12 col-md-6 offset-md-3">
+            <div class="row">
+                <div class="col-6">
+                    <a href="{{ enterprise_show_path }}" class="btn field--submit">{{ text_btn_external|trans }}</a>
+                </div>
+                <div class="col-6 text-right">
+                    <a href="{{ path('admin_comptabilite_entreprise_create') }}" class="btn field--submit">{{ 'admin.compta.entreprise.create.btn-create'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row m-t-40">
         <div class="col-12 col-md-6 offset-md-3">
             <table class="table basic-color">
@@ -8,8 +27,7 @@
                     <tr>
                         <th scope="col">{{ 'admin.compta.entreprise.name_label'|trans }}</th>
                         <th scope="col">{{ 'admin.compta.entreprise.statut_juridique_label'|trans }}</th>
-                        <th scope="col">{{ 'admin.compta.entreprise.date_creation_label'|trans }}</th>
-                        <th scope="col">{{ 'admin.compta.entreprise.date_creation_label'|trans }}</th>
+                        <th scope="col" class="text-right">{{ 'admin.compta.entreprise.date_creation_label'|trans }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -17,7 +35,7 @@
                         <tr>
                             <td>{{ entreprise.nom }}</td>
                             <td>{{ entreprise.statutJuridique }}</td>
-                            <td>{{ render_date(entreprise.dateDebut, '-') }}</td>
+                            <td class="text-right">{{ render_date(entreprise.dateDebut, '-') }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

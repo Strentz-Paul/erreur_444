@@ -1,0 +1,15 @@
+.btn {
+  &.field--submit {
+    background: var(--logo-background-color) !important;
+    color: var(--text-commentaire);
+    font-weight: 700;
+    border: 1px solid var(--logo-background-color);
+    transition: all 0.3s;
+    &:hover {
+      background: var(--text-hover-color) !important;
+    }
+    &:focus {
+      box-shadow: var(--box-shadow-field);
+    }
+  }
+}
