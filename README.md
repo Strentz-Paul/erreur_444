@@ -25,7 +25,7 @@ Pour me contacter:
 v2.0 *-- En cours de développement*
 - Améliorer le Backoffice EasyAdmin (design + balise meta pour chaque page editeur markdown ??)
 - Ajout d'analytics avec [matomo](https://matomo.org/)
-- Créer un générateur de bionic reading? *-- En cours de développement*
+- Ajout de la gestion de comptabilité dans le mode admin *-- En cours de développement*
 
 v3.0
 - Ajout d'une newsletter (lier avec un service de Newsletter externe ?)
