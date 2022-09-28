@@ -3,7 +3,9 @@
 namespace App\Manager;
 
 use App\Contracts\Manager\EntrepriseManagerInterface;
+use App\Dto\EntrepriseDto;
 use App\Entity\Entreprise;
+use App\Enum\StatutJuridiqueEnum;
 use App\Repository\EntrepriseRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,9 +34,38 @@ final class EntrepriseManager implements EntrepriseManagerInterface
     /**
      * @inheritDoc
      */
+    public function createOrUpdate(Entreprise $entreprise, bool $flush = true): void
+    {
+        /** @var int|null $id */
+        $id = $entreprise->getId();
+        if ($id === null) {
+            $this->entityManager->persist($entreprise);
+        }
+        if ($flush === true) {
+            $this->entityManager->flush();
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getAllEntreprises(bool $showExternal): Collection
     {
         return $this->entrepriseRepo->findAllCollection($showExternal);
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function createEntrepriseByDto(EntrepriseDto $dto): Entreprise
+    {
+        $entreprise = Entreprise::create(
+            $dto->getNom(),
+            $dto->getStatutJuridique(),
+            $dto->isExterne(),
+            $dto->getDateDebut()
+        );
+        $this->createOrUpdate($entreprise);
+        return $entreprise;
+    }
 }

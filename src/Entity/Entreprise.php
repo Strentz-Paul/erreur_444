@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Enum\StatutJuridiqueEnum;
 use App\Repository\EntrepriseRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -164,5 +165,26 @@ class Entreprise
         }
 
         return $this;
+    }
+
+    /**
+     * @param string $nom
+     * @param StatutJuridiqueEnum $statut
+     * @param bool $isExterne
+     * @param DateTime|null $dateDebut
+     * @return Entreprise
+     */
+    public static function create(
+        string $nom,
+        StatutJuridiqueEnum $statut,
+        bool $isExterne,
+        ?DateTime $dateDebut
+    ): Entreprise {
+        $entreprise = new Entreprise();
+        $entreprise->setNom($nom)
+            ->setStatutJuridique($statut)
+            ->setIsExterne($isExterne)
+            ->setDateDebut($dateDebut);
+        return $entreprise;
     }
 }

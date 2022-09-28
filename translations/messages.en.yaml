@@ -25,6 +25,7 @@ global:
     example_singuralized: Check example
     example_plurialized: Check examples
     type_more_expand_box: Type more to expand the box
+    choose: Choose
   entreprise:
     label: Enterprise
 article:

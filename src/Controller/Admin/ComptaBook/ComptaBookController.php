@@ -3,7 +3,9 @@
 namespace App\Controller\Admin\ComptaBook;
 
 
+use App\Contracts\Manager\EntrepriseManagerInterface;
 use App\Dto\EntrepriseDto;
+use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
 use App\Service\ComptabiliteService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,14 +31,29 @@ class ComptaBookController extends AbstractController
 
     #[Route('/entreprise-create', name: 'entreprise_create')]
     public function createEntrepriseAction(
-        Request $request
+        Request $request,
+        EntrepriseManagerInterface $manager
     ): Response {
         $dto = new EntrepriseDto();
         $form = $this->createForm(EntrepriseType::class, $dto);
         $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entreprise = $manager->createEntrepriseByDto($dto);
+            return $this->redirectToRoute('admin_comptabilite_entreprise_show', array(
+                'entreprise' => $entreprise->getId()
+            ));
+        }
         return $this->render('admin/comptabook/entreprise--create.html.twig',
         array(
             'form' => $form->createView()
         ));
+    }
+
+    #[Route('/entreprise/{entreprise}', name: 'entreprise_show')]
+    public function EntrepriseShowAction(
+        Request $request,
+       Entreprise $entreprise
+    ): Response {
+        return $this->render('admin/comptabook/entreprise--show.html.twig');
     }
 }

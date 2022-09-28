@@ -7,8 +7,6 @@ use App\Enum\StatutJuridiqueEnum;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\EnumType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,12 +28,15 @@ class EntrepriseType extends AbstractType
                     'class' => 'field--text'
                 ),
             ))
-            ->add('statutJuridique', EnumType::class, array(
-                'class' => StatutJuridiqueEnum::class,
+            ->add('statutJuridique', ChoiceType::class, array(
                 'label' => 'admin.compta.entreprise.statut_juridique_label',
                 'attr' => array(
                     'class' => 'field--text'
                 ),
+                'choices' => array(
+                    'Micro entreprise' => 'Micro entreprise',
+                    'Non défini' => 'Non défini',
+                )
             ))
             ->add('isExterne', ChoiceType::class, array(
                 'choices' => array(

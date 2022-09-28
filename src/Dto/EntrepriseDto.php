@@ -78,12 +78,12 @@ class EntrepriseDto
     }
 
     /**
-     * @param StatutJuridiqueEnum $statutJuridique
+     * @param string $statutJuridique
      * @return EntrepriseDto
      */
-    public function setStatutJuridique(StatutJuridiqueEnum $statutJuridique): EntrepriseDto
+    public function setStatutJuridique(string $statutJuridique): EntrepriseDto
     {
-        $this->statutJuridique = $statutJuridique;
+        $this->statutJuridique = StatutJuridiqueEnum::from($statutJuridique);
         return $this;
     }
 

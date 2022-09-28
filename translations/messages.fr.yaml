@@ -29,6 +29,7 @@ global:
     example_singuralized: Voir un exemple
     example_plurialized: Voir des exemples
     type_more_expand_box: Entrez plus de mots pour aggrandir la zone de text.
+    choose: Choisir
   entreprise:
     label: Entreprise
 article:
