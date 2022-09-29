@@ -56,4 +56,11 @@ class ComptaBookController extends AbstractController
     ): Response {
         return $this->render('admin/comptabook/entreprise--show.html.twig');
     }
+
+    #[Route('/simulateur', name: 'simulateur')]
+    public function simulateurAction(
+        Request $request
+    ): Response {
+        return $this->render('admin/comptabook/simulateur/index.html.twig');
+    }
 }

@@ -19,4 +19,18 @@ final class ComptabiliteService implements ComptabiliteServiceInterface
     {
         return $this->entrepriseManager->getAllEntreprises($showExternal);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function calculSalaire(
+        int $tjm,
+        int $nbJours,
+        float $tauxImpots,
+        int $palierTVA,
+        float $tauxTVA,
+        bool $yearly
+    ): float {
+        return 3;
+    }
 }

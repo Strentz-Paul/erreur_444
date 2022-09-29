@@ -28,6 +28,13 @@ global:
     choose: Choose
   entreprise:
     label: Enterprise
+  simulateur:
+    label: Simulator
+  information:
+    label: Information
+    label_plurialized: Informations
+  result:
+    label: Result
 article:
   label: Article
   label_plurialized: Articles
@@ -70,6 +77,21 @@ admin:
       show-mine: Show my Enterprises
       label: Enterprise
       label_plurialized: Enterprises
+    simulateur:
+      misconfigurated: Please complete all simulator information
+      tjm: TJM in €
+      number_day: number of day yearly
+      percent_impot: Withholding tax rate (taxes)
+      step_tva: VAT level
+      percent_tva: Withholding VAT
+      ca_annual: Annual turnover
+      salaire_mensuel: Monthly salary available
+      placeholder:
+        tjm: 350
+        number_day: 200
+        percent_impot: 5
+        step_tva: 34400
+        percent_tva: 19.5
   dashboard:
     label: Dashboard
   label: Admin

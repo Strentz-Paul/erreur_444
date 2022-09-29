@@ -1,0 +1,114 @@
+<div{{ attributes }}>
+    <div class="row">
+        <div class="col-12">
+            <h3>{{ 'global.information.label_plurialized'|trans }}</h3>
+        </div>
+        <div class="col-12">
+            <div class="row m-b-12">
+                <div class="col-6 text-right">
+                    <label for="tjm">{{ 'admin.compta.simulateur.tjm'|trans }}</label>
+                </div>
+                <div class="col-6 text-left">
+                    <div class="input-group">
+                        <input type="number"
+                               name="tjm"
+                               value="{{ tjm }}"
+                               data-action="live#update"
+                               data-model="tjm"
+                               class="form-control"
+                               placeholder="{{ 'admin.compta.simulateur.placeholder.tjm'|trans }}"
+                        >
+                        <span class="input-group-text">€</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-b-12">
+                <div class="col-6 text-right">
+                    <label for="nbJours">{{ 'admin.compta.simulateur.number_day'|trans }}</label>
+                </div>
+                <div class="col-6 text-left">
+                    <div class="input-group">
+                        <input type="number"
+                               name="nbJours"
+                               value="{{ nbJours }}"
+                               data-action="live#update"
+                               data-model="nbJours"
+                               class="form-control"
+                               placeholder="{{ 'admin.compta.simulateur.placeholder.number_day'|trans }}"
+                        >
+                        <span class="input-group-text">Jours</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-b-12">
+                <div class="col-6 text-right">
+                    <label for="tauxImpots">{{ 'admin.compta.simulateur.percent_impot'|trans }}</label>
+                </div>
+                <div class="col-6 text-left">
+                    <div class="input-group">
+                        <input type="number"
+                               name="tauxImpots"
+                               value="{{ tauxImpots }}"
+                               data-action="live#update"
+                               data-model="tauxImpots"
+                               class="form-control"
+                               placeholder="{{ 'admin.compta.simulateur.placeholder.percent_impot'|trans }}"
+                        >
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-b-12">
+                <div class="col-6 text-right">
+                    <label for="palierTVA">{{ 'admin.compta.simulateur.step_tva'|trans }}</label>
+                </div>
+                <div class="col-6 text-left">
+                    <div class="input-group">
+                        <input type="number"
+                               name="palierTVA"
+                               value="{{ palierTVA }}"
+                               data-action="live#update"
+                               data-model="palierTVA"
+                               class="form-control"
+                               placeholder="{{ 'admin.compta.simulateur.placeholder.step_tva'|trans }}"
+                        >
+                        <span class="input-group-text">€</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-b-12">
+                <div class="col-6 text-right">
+                    <label for="tauxTVA">{{ 'admin.compta.simulateur.percent_tva'|trans }}</label>
+                </div>
+                <div class="col-6 text-left">
+                    <div class="input-group">
+                        <input type="number"
+                               name="tauxTVA"
+                               value="{{ tauxTVA }}"
+                               data-action="live#update"
+                               data-model="tauxTVA"
+                               class="form-control"
+                               placeholder="{{ 'admin.compta.simulateur.placeholder.percent_tva'|trans }}"
+                        >
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>{{ 'global.result.label'|trans }}</h3>
+        </div>
+        {{ chiffreAffaireAnnuel }}
+    </div>
+    {% if isValid is same as false %}
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    {{ infoForm|trans }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

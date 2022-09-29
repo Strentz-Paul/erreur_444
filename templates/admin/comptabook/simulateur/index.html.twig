@@ -1,0 +1,14 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <h1 class="articles--title">{{ 'global.simulateur.label'|trans }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            {{ component('live_simulateur') }}
+        </div>
+    </div>
+{% endblock %}

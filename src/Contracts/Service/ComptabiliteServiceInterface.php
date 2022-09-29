@@ -11,4 +11,22 @@ interface ComptabiliteServiceInterface
      * @return Collection
      */
     public function getAllEntreprises(bool $showExternal): Collection;
+
+    /**
+     * @param int $tjm
+     * @param int $nbJours
+     * @param float $tauxImpots
+     * @param int $palierTVA
+     * @param float $tauxTVA
+     * @param bool $yearly
+     * @return float
+     */
+    public function calculSalaire(
+        int $tjm,
+        int $nbJours,
+        float $tauxImpots,
+        int $palierTVA,
+        float $tauxTVA,
+        bool $yearly
+    ): float;
 }

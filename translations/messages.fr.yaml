@@ -32,6 +32,13 @@ global:
     choose: Choisir
   entreprise:
     label: Entreprise
+  simulateur:
+    label: Simulateur
+  information:
+    label: Information
+    label_plurialized: Informations
+  result:
+    label: Resultat
 article:
   label: Article
   label_plurialized: Articles
@@ -78,6 +85,21 @@ admin:
       show-mine: Voir mes entreprises
       label: Entreprise
       label_plurialized: Entreprises
+    simulateur:
+      misconfigurated: Veuillez, s'il vous plait, compléter toutes les informations du simulateur
+      tjm: TJM en €
+      number_day: Nombre de jours annuel
+      percent_impot: Taux de prélèvement à la source (impôts)
+      step_tva: Palier TVA
+      percent_tva: Taux de TVA
+      ca_annual: Chiffre d'affaire annuel
+      salaire_mensuel: Salaire mensuel disponible
+      placeholder:
+        tjm: 350
+        number_day: 200
+        percent_impot: 5
+        step_tva: 34400
+        percent_tva: 19.5
   dashboard:
     label: Accueil
   label: Admin
