@@ -38,7 +38,7 @@ global:
     label: Information
     label_plurialized: Informations
   result:
-    label: Resultat
+    label: Résultats
 article:
   label: Article
   label_plurialized: Articles
@@ -87,6 +87,7 @@ admin:
       label_plurialized: Entreprises
     simulateur:
       misconfigurated: Veuillez, s'il vous plait, compléter toutes les informations du simulateur
+      informations: ⚠️ Ces chiffres sont donnés à titre indicatif ! ⚠️
       tjm: TJM en €
       number_day: Nombre de jours annuel
       percent_impot: Taux de prélèvement à la source (impôts)

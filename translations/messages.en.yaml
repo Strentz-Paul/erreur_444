@@ -79,6 +79,7 @@ admin:
       label_plurialized: Enterprises
     simulateur:
       misconfigurated: Please complete all simulator information
+      informations: ⚠️ These figures are given for information only ! ⚠️
       tjm: TJM in €
       number_day: number of day yearly
       percent_impot: Withholding tax rate (taxes)

@@ -2,6 +2,8 @@
 
 namespace App\Contracts\Service;
 
+use App\Dto\SimulateurDto;
+use App\ViewModel\SimulateurVM;
 use Doctrine\Common\Collections\Collection;
 
 interface ComptabiliteServiceInterface
@@ -13,20 +15,8 @@ interface ComptabiliteServiceInterface
     public function getAllEntreprises(bool $showExternal): Collection;
 
     /**
-     * @param int $tjm
-     * @param int $nbJours
-     * @param float $tauxImpots
-     * @param int $palierTVA
-     * @param float $tauxTVA
-     * @param bool $yearly
-     * @return float
+     * @param SimulateurDto $dto
+     * @return SimulateurVM
      */
-    public function calculSalaire(
-        int $tjm,
-        int $nbJours,
-        float $tauxImpots,
-        int $palierTVA,
-        float $tauxTVA,
-        bool $yearly
-    ): float;
+    public function calculSalaireByDto(SimulateurDto $dto): SimulateurVM;
 }

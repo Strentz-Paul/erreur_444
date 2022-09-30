@@ -1,3 +1,11 @@
+{#
+    Params:
+    {
+        'form'      : SimulateurType,
+        'vm'        : SimulateurVM,
+        'is_valid'  : bool
+    }
+#}
 {% extends 'base-admin.html.twig' %}
 
 {% block body %}
@@ -6,9 +14,111 @@
             <h1 class="articles--title">{{ 'global.simulateur.label'|trans }}</h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row simulator">
         <div class="col-12 col-md-6 offset-md-3">
-            {{ component('live_simulateur') }}
+            {% if is_valid is same as false %}
+                <div class="alert alert-info" role="alert">
+                    {{ 'admin.compta.simulateur.misconfigurated'|trans }}
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-12">
+                    <h3>{{ 'global.information.label_plurialized'|trans }}</h3>
+                </div>
+                {{ form_start(form) }}
+                <div class="col-12">
+                    <div class="row m-b-12">
+                        <div class="col-6 text-right">
+                            {{ form_label(form.tjm) }}
+                        </div>
+                        <div class="col-4 text-left">
+                            <div class="input-group">
+                                {{ form_widget(form.tjm, {'attr' : {'class' : 'form-control'}}) }}
+                                <span class="input-group-text">€</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-b-12">
+                        <div class="col-6 text-right">
+                            {{ form_label(form.nbJours) }}
+                        </div>
+                        <div class="col-4 text-left">
+                            <div class="input-group">
+                                {{ form_widget(form.nbJours, {'attr' : {'class' : 'form-control'}}) }}
+                                <span class="input-group-text">Jours</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-b-12">
+                        <div class="col-6 text-right">
+                            {{ form_label(form.tauxImpots) }}
+                        </div>
+                        <div class="col-4 text-left">
+                            <div class="input-group">
+                                {{ form_widget(form.tauxImpots, {'attr' : {'class' : 'form-control'}}) }}
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-b-12">
+                        <div class="col-6 text-right">
+                            {{ form_label(form.palierTVA) }}
+                        </div>
+                        <div class="col-4 text-left">
+                            <div class="input-group">
+                                {{ form_widget(form.palierTVA, {'attr' : {'class' : 'form-control'}}) }}
+                                <span class="input-group-text">€</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-b-12">
+                        <div class="col-6 text-right">
+                            {{ form_label(form.tauxTVA) }}
+                        </div>
+                        <div class="col-4 text-left">
+                            <div class="input-group">
+                                {{ form_widget(form.tauxTVA, {'attr' : {'class' : 'form-control'}}) }}
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-b-12">
+                        <div class="col-12 text-right">
+                            {{ form_widget(form.submit) }}
+                        </div>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            {% if vm is not null %}
+                <div class="row">
+                    <div class="col-12">
+                        <h3>{{ 'global.result.label'|trans }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-8 offset-md-2">
+                        <div class="alert alert-dark text-center" role="alert">
+                            {{ 'admin.compta.simulateur.informations'|trans }}
+                        </div>
+                    </div>
+                </div>
+
+                {{ vm.salaireAnnuel }}
+                {{ vm.salaireMensuel }}
+                {{ vm.nbDeJoursAvantPalierTVA }}
+                {{ vm.tjmApplicableAvantTVA }}
+            {% endif %}
+            {#            {% if isValid is same as false %}#}
+{#                <div class="row">#}
+{#                    <div class="col-12">#}
+{#                        <div class="alert alert-info" role="alert">#}
+{#                            {{ infoForm|trans }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endif %}#}
+
         </div>
     </div>
 {% endblock %}

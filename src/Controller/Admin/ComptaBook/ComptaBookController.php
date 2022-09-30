@@ -4,14 +4,18 @@ namespace App\Controller\Admin\ComptaBook;
 
 
 use App\Contracts\Manager\EntrepriseManagerInterface;
+use App\Contracts\Service\ComptabiliteServiceInterface;
 use App\Dto\EntrepriseDto;
+use App\Dto\SimulateurDto;
 use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
+use App\Form\SimulateurType;
 use App\Service\ComptabiliteService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[Route('/admin/comptabilite', name: 'admin_comptabilite_')]
 class ComptaBookController extends AbstractController
@@ -59,8 +63,23 @@ class ComptaBookController extends AbstractController
 
     #[Route('/simulateur', name: 'simulateur')]
     public function simulateurAction(
-        Request $request
+        Request $request,
+        ComptabiliteServiceInterface $service,
+        ValidatorInterface $validator
     ): Response {
-        return $this->render('admin/comptabook/simulateur/index.html.twig');
+        $dtoSimulateur = new SimulateurDto();
+        $formCalcul = $this->createForm(SimulateurType::class, $dtoSimulateur);
+        $isValid = false;
+        $formCalcul->handleRequest($request);
+        $vmSimulateur = null;
+        if ($formCalcul->isSubmitted() && $formCalcul->isValid()) {
+            $isValid = $validator->validate($dtoSimulateur)->count() === 0;
+            $vmSimulateur = $service->calculSalaireByDto($dtoSimulateur);
+        }
+        return $this->render('admin/comptabook/simulateur/index.html.twig', array(
+            'vm' => $vmSimulateur,
+            'form' => $formCalcul->createView(),
+            'is_valid' => $isValid
+        ));
     }
 }
