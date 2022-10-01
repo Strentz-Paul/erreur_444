@@ -8,7 +8,8 @@ final class SimulateurVM
         private float $salaireAnnuel,
         private float $salaireMensuel,
         private int $nbDeJoursAvantPalierTVA,
-        private float $tjmApplicableAvantTVA
+        private float $tjmApplicableAvantTVA,
+        private float $caAnnuel
     ){}
 
     /**
@@ -41,5 +42,13 @@ final class SimulateurVM
     public function getTjmApplicableAvantTVA(): float
     {
         return $this->tjmApplicableAvantTVA;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCaAnnuel(): float
+    {
+        return $this->caAnnuel;
     }
 }

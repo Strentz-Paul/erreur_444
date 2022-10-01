@@ -100,6 +100,18 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-12 col-md-6 text-right bold">
+                                    {{ 'admin.compta.simulateur.ca_annual'|trans }}
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <span class="p-r-10"> : </span>
+                                    {{ format_money(vm.caAnnuel) ~ '€' }}
+                                    {% if vm.caAnnuel > 72600 %}
+                                        <span class="p-l-10" data-bs-toggle="tooltip" title="{{ 'admin.compta.simulateur.over'|trans }}">⚠️</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row m-t-15">
+                                <div class="col-12 col-md-6 text-right bold">
                                     {{ 'admin.compta.salaire_annuel'|trans }}
                                 </div>
                                 <div class="col-md-6 text-left">

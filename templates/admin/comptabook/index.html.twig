@@ -36,7 +36,7 @@
                             <td>{{ entreprise.nom }}</td>
                             <td>{{ entreprise.statutJuridique }}</td>
                             <td class="text-right">{{ render_date(entreprise.dateDebut, '-') }}</td>
-                            <td class="text-right no-border"><a href="{{ path('admin_comptabilite_entreprise_show', {'entreprise' : entreprise.id }) }}" class="btn btn-dark">{{ 'global.action.choose'|trans }}</a></td>
+                            <td class="text-right no-border"><a href="{{ path('admin_comptabilite_entreprise_show', {'entreprise' : entreprise.id }) }}" class="btn field--submit">{{ 'global.action.choose'|trans }}</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

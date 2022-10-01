@@ -13,6 +13,10 @@ services:
       - "./docker/db/mysql:/var/lib/mysql"
     ports:
       - 3346:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: p@ssword
+      MYSQL_DATABASE: erreur444
+
   maildev:
     image: djfarrelly/maildev
     ports:

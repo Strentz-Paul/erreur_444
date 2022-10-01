@@ -31,6 +31,7 @@ global:
     example_plurialized: Voir des exemples
     type_more_expand_box: Entrez plus de mots pour aggrandir la zone de text.
     choose: Choisir
+    label_plurialized: Actions
   entreprise:
     label: Entreprise
   simulateur:
@@ -99,6 +100,7 @@ admin:
       step_tva: Palier TVA
       percent_tva: Taux de TVA
       ca_annual: Chiffre d'affaire annuel
+      ca_mensual: Chiffre d'affaire mensuel
       salaire_mensuel: Salaire mensuel disponible
       placeholder:
         tjm: 350
@@ -106,6 +108,9 @@ admin:
         percent_impot: 5
         step_tva: 34400
         percent_tva: 19.5
+      over: 💵 Vous avez dépassé le seuil de CA de la micro entreprise !
+    devis:
+      create: Créer un devis
   dashboard:
     label: Accueil
   label: Admin

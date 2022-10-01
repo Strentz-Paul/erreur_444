@@ -1,4 +1,38 @@
 {% extends 'base-admin.html.twig' %}
 
 {% block body %}
+    <div class="row">
+        <div class="col-12">
+            <h1 class="articles--title">{{ 'admin.compta.entreprise.label'|trans ~ ' ' ~ entreprise.nom }}</h1>
+        </div>
+    </div>
+    <div class="row comptabilite">
+        <div class="col-12 col-md-6 offset-md-3">
+            <div class="row">
+                <div class="col-12">
+                    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='dimgrey'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ path('admin_comptabilite_index') }}" class="link-breadcrumb">{{ 'admin.compta.entreprise.label'|trans }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ entreprise.nom }}</li>
+                        </ol>
+                    </nav>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="extra-bold">{{ 'global.action.label_plurialized'|trans|upper }}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 offset-2">
+                    {% if entreprise.isExterne is same as false %}
+                        <a href="{{ path('admin_comptabilite_devis_create') }}" class="btn field--submit">
+                            {{ 'admin.compta.devis.create'|trans }}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

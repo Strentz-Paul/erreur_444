@@ -11,6 +11,7 @@ use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
 use App\Form\SimulateurType;
 use App\Service\ComptabiliteService;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,6 +40,8 @@ class ComptaBookController extends AbstractController
         EntrepriseManagerInterface $manager
     ): Response {
         $dto = new EntrepriseDto();
+        $dateCreation = new DateTime();
+        $dto->setDateDebut($dateCreation);
         $form = $this->createForm(EntrepriseType::class, $dto);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -58,7 +61,9 @@ class ComptaBookController extends AbstractController
         Request $request,
        Entreprise $entreprise
     ): Response {
-        return $this->render('admin/comptabook/entreprise--show.html.twig');
+        return $this->render('admin/comptabook/entreprise--show.html.twig', array(
+            'entreprise' => $entreprise
+        ));
     }
 
     #[Route('/simulateur', name: 'simulateur')]
@@ -81,5 +86,12 @@ class ComptaBookController extends AbstractController
             'form' => $formCalcul->createView(),
             'is_valid' => $isValid
         ));
+    }
+
+    #[Route('/devis/create', name: 'devis_create')]
+    public function createDevisAction(
+        Request $request
+    ): Response {
+        return $this->render('admin/comptabook/devis--create.html.twig');
     }
 }

@@ -30,6 +30,7 @@ global:
     example_plurialized: Check examples
     type_more_expand_box: Type more to expand the box
     choose: Choose
+    label_plurialized: Actions
   entreprise:
     label: Enterprise
   simulateur:
@@ -94,6 +95,7 @@ admin:
       step_tva: VAT level
       percent_tva: Withholding VAT
       ca_annual: Annual turnover
+      ca_mensual: Mensual turnover
       salaire_mensuel: Monthly salary available
       placeholder:
         tjm: 350
@@ -101,6 +103,9 @@ admin:
         percent_impot: 5
         step_tva: 34400
         percent_tva: 19.5
+      over: 💵 You have exceeded the micro business CA threshold !
+    devis:
+      create: Create a quote
   dashboard:
     label: Dashboard
   label: Admin
