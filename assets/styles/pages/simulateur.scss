@@ -1,3 +1,6 @@
 .simulator {
   color: var(--text-color);
+  ul {
+      list-style-type: space-counter;
+  }
 }

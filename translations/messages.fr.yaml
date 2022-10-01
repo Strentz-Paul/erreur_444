@@ -25,6 +25,7 @@ global:
   linkedin: LinkedIn
   twitter: Twitter
   github: GitHub
+  day: jour(s)
   action:
     example_singuralized: Voir un exemple
     example_plurialized: Voir des exemples
@@ -73,6 +74,10 @@ author:
   contact: Contacter
 admin:
   compta:
+    salaire_annuel: Salaire (annuel)
+    salaire_mensuel: Salaire (mensuel)
+    nb_jours_avant_seuil_tva: "Nombre de jours avant le seuil de TVA (%tva%€)"
+    tjm_avant_seuil_tva: TJM avant atteinte de seuil de TVA
     label: Comptabilité
     entreprise:
       name_label: Nom de l'entreprise

@@ -23,7 +23,7 @@
             {% endif %}
             <div class="row">
                 <div class="col-12">
-                    <h3>{{ 'global.information.label_plurialized'|trans }}</h3>
+                    <h3 class="extra-bold">{{ 'global.information.label_plurialized'|trans|upper }}</h3>
                 </div>
                 {{ form_start(form) }}
                 <div class="col-12">
@@ -91,34 +91,59 @@
                 {{ form_end(form) }}
             </div>
             {% if vm is not null %}
-                <div class="row">
-                    <div class="col-12">
-                        <h3>{{ 'global.result.label'|trans }}</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-md-8 offset-md-2">
-                        <div class="alert alert-dark text-center" role="alert">
-                            {{ 'admin.compta.simulateur.informations'|trans }}
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="extra-bold">{{ 'global.result.label'|trans|upper }}</h3>
                         </div>
                     </div>
-                </div>
-
-                {{ vm.salaireAnnuel }}
-                {{ vm.salaireMensuel }}
-                {{ vm.nbDeJoursAvantPalierTVA }}
-                {{ vm.tjmApplicableAvantTVA }}
+                    <div class="row m-t-20">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 col-md-6 text-right bold">
+                                    {{ 'admin.compta.salaire_annuel'|trans }}
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <span class="p-r-10"> : </span>
+                                    {{ format_money(vm.salaireAnnuel) ~ '€' }}
+                                </div>
+                            </div>
+                            <div class="row m-t-15">
+                                <div class="col-12 col-md-6 text-right bold">
+                                    {{ 'admin.compta.salaire_mensuel'|trans }}
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <span class="p-r-10"> : </span>
+                                    {{ format_money(vm.salaireMensuel) ~ '€' }}
+                                </div>
+                            </div>
+                            <div class="row m-t-15">
+                                <div class="col-12 col-md-6 text-right bold">
+                                    {{ 'admin.compta.nb_jours_avant_seuil_tva'|trans({'%tva%' : form.vars.data.palierTVA }) }}
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <span class="p-r-10"> : </span>
+                                    {{ vm.nbDeJoursAvantPalierTVA ~ '  ' ~ 'global.day'|trans }}
+                                </div>
+                            </div>
+                            <div class="row m-t-15">
+                                <div class="col-12 col-md-6 text-right bold">
+                                   {{ 'admin.compta.tjm_avant_seuil_tva'|trans }}
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <span class="p-r-10"> : </span>
+                                    {{ format_money(vm.tjmApplicableAvantTVA) ~ '€' }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-t-30">
+                        <div class="col-12 col-md-6 offset-md-3">
+                            <div class="alert alert-dark text-center" role="alert">
+                                {{ 'admin.compta.simulateur.informations'|trans }}
+                            </div>
+                        </div>
+                    </div>
             {% endif %}
-            {#            {% if isValid is same as false %}#}
-{#                <div class="row">#}
-{#                    <div class="col-12">#}
-{#                        <div class="alert alert-info" role="alert">#}
-{#                            {{ infoForm|trans }}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            {% endif %}#}
-
         </div>
     </div>
 {% endblock %}
