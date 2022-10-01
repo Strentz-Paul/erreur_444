@@ -26,7 +26,8 @@ final class TwigExtension extends AbstractExtension
             new TwigFunction('render_date', array($this, 'renderDate')),
             new TwigFunction('convert_slug_to_string', array($this, 'convertSlugToString')),
             new TwigFunction('render_diff_day', array($this, 'renderDiffDay')),
-            new TwigFunction('render_light_or_dark_text_color', array($this, 'renderLightOrDarkTextColor'))
+            new TwigFunction('render_light_or_dark_text_color', array($this, 'renderLightOrDarkTextColor')),
+            new TwigFunction('format_money', array($this, 'formatMoney'))
         );
     }
 
@@ -90,5 +91,14 @@ final class TwigExtension extends AbstractExtension
     {
         $colorClass = new Color($color);
         return $colorClass->isDark() ? '#ffffff' : '#000000';
+    }
+
+    /**
+     * @param float $number
+     * @return string
+     */
+    public function formatMoney(float $number): string
+    {
+        return number_format($number, 2, ',', ' ');
     }
 }

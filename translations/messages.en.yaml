@@ -21,6 +21,10 @@ global:
   reloading_delay: still working
   update_each_stroke: Updates on "input" (each key stroke).
   a-propos: About
+  linkedin: LinkedIn
+  twitter: Twitter
+  github: GitHub
+  day: Day(s)
   action:
     example_singuralized: Check example
     example_plurialized: Check examples
@@ -28,6 +32,13 @@ global:
     choose: Choose
   entreprise:
     label: Enterprise
+  simulateur:
+    label: Simulator
+  information:
+    label: Information
+    label_plurialized: Informations
+  result:
+    label: Result
 article:
   label: Article
   label_plurialized: Articles
@@ -59,6 +70,10 @@ a-propos:
   description: <h2 class="a-propos--sub-title">If you got there,</h2><hr class="divider"><p class="a-propos--body-content">it's probably that you want to know what <span class="text-bold">the purpose of blogging is</span>, or maybe find out <span class="text-bold">who is behind these articles</span>. Good reflex.</p><p class="a-propos--body-content">I will make it short.</p><p class="a-propos--body-content text-bold">This blog is a small summary of implementations which, in my opinion, are not detailed enough on other sites.</p><p class="a-propos--body-content">It is also a logbook of my discoveries. It can be a portfolio for some, an excess of ego for others, but it's above all a side project that helps me build skills.</p>
 admin:
   compta:
+    salaire_annuel: Annual salary
+    salaire_mensuel: Monthly pay
+    nb_jours_avant_seuil_tva: "Number of days before the VAT threshold (%tva%€)"
+    tjm_avant_seuil_tva: TJM before reaching the VAT threshold
     entreprise:
       name_label: Enterprise name
       statut_juridique_label: Juridique status
@@ -70,6 +85,22 @@ admin:
       show-mine: Show my Enterprises
       label: Enterprise
       label_plurialized: Enterprises
+    simulateur:
+      misconfigurated: Please complete all simulator information
+      informations: ⚠️ These figures are given for information only ! ⚠️
+      tjm: TJM in €
+      number_day: number of day yearly
+      percent_impot: Withholding tax rate (taxes)
+      step_tva: VAT level
+      percent_tva: Withholding VAT
+      ca_annual: Annual turnover
+      salaire_mensuel: Monthly salary available
+      placeholder:
+        tjm: 350
+        number_day: 200
+        percent_impot: 5
+        step_tva: 34400
+        percent_tva: 19.5
   dashboard:
     label: Dashboard
   label: Admin

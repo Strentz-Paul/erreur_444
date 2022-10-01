@@ -25,6 +25,7 @@ global:
   linkedin: LinkedIn
   twitter: Twitter
   github: GitHub
+  day: jour(s)
   action:
     example_singuralized: Voir un exemple
     example_plurialized: Voir des exemples
@@ -32,6 +33,13 @@ global:
     choose: Choisir
   entreprise:
     label: Entreprise
+  simulateur:
+    label: Simulateur
+  information:
+    label: Information
+    label_plurialized: Informations
+  result:
+    label: Résultats
 article:
   label: Article
   label_plurialized: Articles
@@ -66,6 +74,10 @@ author:
   contact: Contacter
 admin:
   compta:
+    salaire_annuel: Salaire (annuel)
+    salaire_mensuel: Salaire (mensuel)
+    nb_jours_avant_seuil_tva: "Nombre de jours avant le seuil de TVA (%tva%€)"
+    tjm_avant_seuil_tva: TJM avant atteinte de seuil de TVA
     label: Comptabilité
     entreprise:
       name_label: Nom de l'entreprise
@@ -78,6 +90,22 @@ admin:
       show-mine: Voir mes entreprises
       label: Entreprise
       label_plurialized: Entreprises
+    simulateur:
+      misconfigurated: Veuillez, s'il vous plait, compléter toutes les informations du simulateur
+      informations: ⚠️ Ces chiffres sont donnés à titre indicatif ! ⚠️
+      tjm: TJM en €
+      number_day: Nombre de jours annuel
+      percent_impot: Taux de prélèvement à la source (impôts)
+      step_tva: Palier TVA
+      percent_tva: Taux de TVA
+      ca_annual: Chiffre d'affaire annuel
+      salaire_mensuel: Salaire mensuel disponible
+      placeholder:
+        tjm: 350
+        number_day: 200
+        percent_impot: 5
+        step_tva: 34400
+        percent_tva: 19.5
   dashboard:
     label: Accueil
   label: Admin
