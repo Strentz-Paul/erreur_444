@@ -5,9 +5,12 @@ namespace App\Controller\Admin\ComptaBook;
 
 use App\Contracts\Manager\EntrepriseManagerInterface;
 use App\Contracts\Service\ComptabiliteServiceInterface;
+use App\Dto\DevisDto;
 use App\Dto\EntrepriseDto;
 use App\Dto\SimulateurDto;
 use App\Entity\Entreprise;
+use App\Enum\DevisStatutEnum;
+use App\Form\DevisType;
 use App\Form\EntrepriseType;
 use App\Form\SimulateurType;
 use App\Service\ComptabiliteService;
@@ -88,10 +91,20 @@ class ComptaBookController extends AbstractController
         ));
     }
 
-    #[Route('/devis/create', name: 'devis_create')]
+    #[Route('/{entreprise}/devis/create', name: 'devis_create')]
     public function createDevisAction(
-        Request $request
+        Request $request,
+        Entreprise $entreprise
     ): Response {
-        return $this->render('admin/comptabook/devis--create.html.twig');
+        $devisDto = new DevisDto();
+        $devisDto->setEntreprise($entreprise);
+        $devisForm = $this->createForm(DevisType::class, $devisDto);
+        $devisForm->handleRequest($request);
+        if ($devisForm->isSubmitted() && $devisForm->isValid()) {
+
+        }
+        return $this->render('admin/comptabook/devis--create.html.twig', array(
+            'devis_form' => $devisForm->createView(),
+        ));
     }
 }
