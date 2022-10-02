@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-8 offset-2">
                     {% if entreprise.isExterne is same as false %}
-                        <a href="{{ path('admin_comptabilite_devis_create') }}" class="btn field--submit">
+                        <a href="{{ path('admin_comptabilite_devis_create', {'entreprise' : entreprise.id}) }}" class="btn field--submit">
                             {{ 'admin.compta.devis.create'|trans }}
                         </a>
                     {% endif %}

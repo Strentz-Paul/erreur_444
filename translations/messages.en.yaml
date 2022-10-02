@@ -87,6 +87,7 @@ admin:
       label: Enterprise
       label_plurialized: Enterprises
     simulateur:
+      statut_devis: State of quote
       misconfigurated: Please complete all simulator information
       informations: ⚠️ These figures are given for information only ! ⚠️
       tjm: TJM in €
@@ -106,6 +107,7 @@ admin:
       over: 💵 You have exceeded the micro business CA threshold !
     devis:
       create: Create a quote
-  dashboard:
+      is_complete: Is the estimate complete
+dashboard:
     label: Dashboard
   label: Admin
