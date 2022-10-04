@@ -60,7 +60,7 @@ final class ComptabiliteService implements ComptabiliteServiceInterface
             $dto->getTjm(),
             $dto->getTauxTVA()
         );
-        $caAnnuel = $this->calculCAAnnuel($dto->getTjm(), $dto->getNbJours());
+        $caAnnuel = $this->calculCAAnnuel($dto->getTjm(), $dto->getNbJours(), $nbJoursAvantPalier, $tjmApplicableAvantTVA);
         return new SimulateurVM(
             $salaireAnnuel,
             $salaireMensuel,
@@ -123,6 +123,9 @@ final class ComptabiliteService implements ComptabiliteServiceInterface
     ): int {
         $caSansTVA = 0;
         $nbDay = 0;
+        if ($palierTVA === 0) {
+            return 0;
+        }
         for ($i = 0; $i < $nbJours; $i++) {
             $nbDay++;
             $caSansTVA += $tjm;
@@ -150,10 +153,16 @@ final class ComptabiliteService implements ComptabiliteServiceInterface
     /**
      * @param float $tjm
      * @param int $nbJours
+     * @param int $nbJoursAvantPalier
+     * @param float $tjmApplicableAvantTVA
      * @return float
      */
-    private function calculCAAnnuel(float $tjm, int $nbJours): float
-    {
-        return $tjm * $nbJours;
+    private function calculCAAnnuel(
+        float $tjm,
+        int $nbJours,
+        int $nbJoursAvantPalier,
+        float $tjmApplicableAvantTVA
+    ): float {
+        return ($tjm * ($nbJours - $nbJoursAvantPalier))+(($tjmApplicableAvantTVA * $nbJoursAvantPalier));
     }
 }
