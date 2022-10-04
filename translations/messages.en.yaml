@@ -108,6 +108,6 @@ admin:
     devis:
       create: Create a quote
       is_complete: Is the estimate complete
-dashboard:
+  dashboard:
     label: Dashboard
   label: Admin
