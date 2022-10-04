@@ -12,7 +12,6 @@ class SimulateurDto
     private ?int $nbJours;
     #[Assert\GreaterThan(0)]
     private ?float $tauxImpots;
-    #[Assert\GreaterThan(0)]
     private int $palierTVA = 34400;
     #[Assert\GreaterThan(0)]
     private float $tauxTVA = 19.5;
