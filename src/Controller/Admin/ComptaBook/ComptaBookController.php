@@ -101,10 +101,11 @@ class ComptaBookController extends AbstractController
         $devisForm = $this->createForm(DevisType::class, $devisDto);
         $devisForm->handleRequest($request);
         if ($devisForm->isSubmitted() && $devisForm->isValid()) {
-
+            // TODO: généré un pdf du devis Amileorrer le devis pour demander si on fait le calcul de tva ou non regarder si CA au niveau de l'entreprise puis le stocker dans les devis généré
         }
         return $this->render('admin/comptabook/devis--create.html.twig', array(
             'devis_form' => $devisForm->createView(),
+            'entreprise' => $entreprise
         ));
     }
 }

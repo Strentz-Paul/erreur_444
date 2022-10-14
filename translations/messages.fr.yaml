@@ -97,6 +97,7 @@ admin:
       informations: ⚠️ Ces chiffres sont donnés à titre indicatif ! ⚠️
       tjm: TJM en €
       number_day: Nombre de jours annuel
+      number_day_simple: Nombre de jours
       percent_impot: Taux de prélèvement à la source (impôts)
       step_tva: Palier TVA
       percent_tva: Taux de TVA
@@ -111,6 +112,8 @@ admin:
         percent_tva: 19.5
       over: 💵 Vous avez dépassé le seuil de CA de la micro entreprise !
     devis:
+      label: Devis
+      create_title: Créer un devis
       create: Créer un devis
       is_complete: Est-ce que le devis est complété ?
   dashboard:

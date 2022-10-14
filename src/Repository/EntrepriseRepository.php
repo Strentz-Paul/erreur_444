@@ -65,6 +65,17 @@ class EntrepriseRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return QueryBuilder
+     */
+    public function getEntrepriseExterneQB(): QueryBuilder
+    {
+        $eAlias = DoctrineHelper::ALIAS_ENTREPRISE;
+        $query = $this->createQueryBuilder($eAlias);
+        self::addExternalConstraint($query, true, $eAlias);
+        return $query;
+    }
+
+    /**
      * @param QueryBuilder $query
      * @param bool $isExternal
      * @param string $eAlias

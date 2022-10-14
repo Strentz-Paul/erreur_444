@@ -1,10 +1,91 @@
 {% extends 'base-admin.html.twig' %}
 
 {% block body %}
+    <div class="row">
+        <div class="col-12">
+            <h1 class="articles--title">{{ 'admin.compta.devis.label'|trans }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='dimgrey'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('admin_comptabilite_index') }}" class="link-breadcrumb">{{ 'admin.compta.entreprise.label_plurialized'|trans }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('admin_comptabilite_entreprise_show', {'entreprise' : entreprise.id }) }}" class="link-breadcrumb">{{ entreprise.nom }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ 'admin.compta.devis.label'|trans }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     <div class="row comptabilite">
         <div class="col-12  col-md-6 offset-md-3">
-            {{ form_start(devis_form) }}
-            {{ form_end(devis_form) }}
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="extra-bold">{{ 'admin.compta.devis.create_title'|trans|upper }}</h3>
+                </div>
+            </div>
+            <div class="row m-t-40">
+                <div class="col-12">
+                    {{ form_start(devis_form) }}
+                    <div class="row m-b-12 d-flex align-items-center">
+                        <div class="col-6 text-right">
+                            {{ form_label(devis_form.client) }}
+                        </div>
+                        <div class="col-4 text-left">
+                            <div class="input-group">
+                                {{ form_widget(devis_form.client, {'attr' : {'class' : 'form-control'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-b-12 d-flex align-items-center">
+                        <div class="col-6 text-right">
+                            {{ form_label(devis_form.tjm) }}
+                        </div>
+                        <div class="col-4 text-left">
+                            <div class="input-group">
+                                {{ form_widget(devis_form.tjm, {'attr' : {'class' : 'form-control'}}) }}
+                                <span class="input-group-text">€</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-b-12 d-flex align-items-center">
+                        <div class="col-6 text-right">
+                            {{ form_label(devis_form.nbJours) }}
+                        </div>
+                        <div class="col-4 text-left">
+                            <div class="input-group">
+                                {{ form_widget(devis_form.nbJours, {'attr' : {'class' : 'form-control'}}) }}
+                                <span class="input-group-text">Jours</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-b-12 d-flex align-items-center">
+                        <div class="col-6 text-right">
+                            {{ form_label(devis_form.statut) }}
+                        </div>
+                        <div class="col-4 text-left">
+                            <div class="input-group">
+                                {{ form_widget(devis_form.statut, {'attr' : {'class' : 'form-control'}}) }}
+                                <span class="input-group-text">{{ 'admin.compta.simulateur.statut_devis'|trans }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-t-20">
+                        <div class="col-6 text-right">
+                            {{ form_label(devis_form.completed) }}
+                        </div>
+                        <div class="col-3 col-lg-2 text-left">
+                            {{ form_widget(devis_form.completed, {'attr' : {'class' : 'd-flex justify-content-between'}}) }}
+                        </div>
+                    </div>
+                    <div class="row m-t-30">
+                        <div class="col-12 text-right">
+                            {{ form_widget(devis_form.submit) }}
+                        </div>
+                    </div>
+                    {{ form_end(devis_form) }}
+                </div>
+            </div>
         </div>
     </div>
 
