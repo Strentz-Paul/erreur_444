@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,7 +21,7 @@ class DevisType extends AbstractType
                 'class' => 'field--text',
                 'data-placeholder' => 'admin.compta.simulateur.placeholder.number_day'
             ),
-            'label' => 'admin.compta.simulateur.number_day'
+            'label' => 'admin.compta.simulateur.number_day_simple'
         ))
             ->add('tjm', NumberType::class, array(
                 'attr' => array(
@@ -50,6 +51,9 @@ class DevisType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'label' => 'admin.compta.devis.is_complete'
+            ))
+            ->add('client', TextType::class, array(
+                'label' => 'admin.compta.entreprise.label'
             ))
             ->add('submit', SubmitType::class, array(
                 'attr' => array(

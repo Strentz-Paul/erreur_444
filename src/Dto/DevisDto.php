@@ -12,6 +12,7 @@ class DevisDto
     private DevisStatutEnum $statut;
     private bool $completed = false;
     private Entreprise $entreprise;
+    private ?string $client;
 
     /**
      * @return DevisStatutEnum
@@ -100,6 +101,24 @@ class DevisDto
     public function setEntreprise(Entreprise $entreprise): DevisDto
     {
         $this->entreprise = $entreprise;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getClient(): ?string
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param string|null $client
+     * @return DevisDto
+     */
+    public function setClient(?string $client): DevisDto
+    {
+        $this->client = $client;
         return $this;
     }
 }

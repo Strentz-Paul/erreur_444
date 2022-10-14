@@ -92,6 +92,7 @@ admin:
       informations: ⚠️ These figures are given for information only ! ⚠️
       tjm: TJM in €
       number_day: number of day yearly
+      number_day_simple: Number of days
       percent_impot: Withholding tax rate (taxes)
       step_tva: VAT level
       percent_tva: Withholding VAT
@@ -106,6 +107,8 @@ admin:
         percent_tva: 19.5
       over: 💵 You have exceeded the micro business CA threshold !
     devis:
+      label: Quote
+      create_title: Create a quote
       create: Create a quote
       is_complete: Is the estimate complete
   dashboard:

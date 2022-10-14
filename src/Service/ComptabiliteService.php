@@ -135,7 +135,7 @@ final class ComptabiliteService implements ComptabiliteServiceInterface
                 return $nbDay;
             }
         }
-        return -1;
+        return 0;
     }
 
     /**
